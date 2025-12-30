@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>回声谷 - 你的声音，必有回响</title>
+    <meta name="description" content="回声谷是一个专为大学生打造的安全、温暖、深度的校园情感社区，用AI技术传递人文关怀，让每一次倾诉都有温暖回应。">
+    
+    <!-- 字体引入 -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- 核心库引入 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" rel="stylesheet">
+    
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-brand">
+                <img src="resources/logo.png" alt="回声谷" onerror="this.style.display='none'">
+                <span>回声谷</span>
+            </a>
+            
+            <button class="mobile-menu-toggle" aria-label="菜单">
+                <span>☰</span>
+            </button>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link active">首页</a></li>
+                <li><a href="voices.html" class="nav-link">心声树洞</a></li>
+                <li><a href="square.html" class="nav-link">共鸣广场</a></li>
+                <li><a href="station.html" class="nav-link">心灵驿站</a></li>
+                <li><a href="profile.html" class="nav-link">个人中心</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 主内容区域 -->
+    <main class="main-content">
+        <!-- Hero区域 -->
+        <section class="hero-section">
+            <div class="hero-background"></div>
+            <div class="container">
+                <div class="hero-content fade-in">
+                    <h1 class="hero-title">你的声音，必有回响</h1>
+                    <p class="hero-subtitle">
+                        在这里，每一个孤独的灵魂都能找到共鸣<br>
+                        在这里，每一次真诚的倾诉都有温暖的回应<br>
+                        回声谷，大学生心灵的避风港
+                    </p>
+                    <div class="hero-actions">
+                        <a href="voices.html" class="btn btn-primary btn-large">开始倾诉</a>
+                        <a href="square.html" class="btn btn-outline btn-large">参与讨论</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 平台数据概览 -->
+        <section class="content-section">
+            <div class="container">
+                <div class="home-stats fade-in">
+                    <div class="home-stat-card">
+                        <div class="home-stat-icon">👥</div>
+                        <div class="home-stat-number">50,000+</div>
+                        <div class="home-stat-label">注册用户</div>
+                    </div>
+                    <div class="home-stat-card">
+                        <div class="home-stat-icon">💬</div>
+                        <div class="home-stat-number">200,000+</div>
+                        <div class="home-stat-label">温暖回应</div>
+                    </div>
+                    <div class="home-stat-card">
+                        <div class="home-stat-icon">🏫</div>
+                        <div class="home-stat-number">500+</div>
+                        <div class="home-stat-label">合作高校</div>
+                    </div>
+                    <div class="home-stat-card">
+                        <div class="home-stat-icon">🤖</div>
+                        <div class="home-stat-number">95%</div>
+                        <div class="home-stat-label">AI准确率</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 校园情绪热力图 -->
+        <section class="content-section">
+            <div class="container">
+                <div class="section-header scroll-reveal">
+                    <h2 class="section-title">校园情绪监测</h2>
+                    <p class="section-subtitle">
+                        实时了解校园情绪生态，用数据守护每一位同学的心理健康
+                    </p>
+                </div>
+                
+                <div class="grid grid-2">
+                    <div class="card scroll-reveal">
+                        <div class="card-header">
+                            <h3 class="card-title">情绪分布</h3>
+                        </div>
+                        <div id="emotion-chart" style="height: 300px;"></div>
+                    </div>
+                    
+                    <div class="card scroll-reveal">
+                        <div class="card-header">
+                            <h3 class="card-title">本周热点话题</h3>
+                        </div>
+                        <div class="topic-list">
+                            <div class="topic-item">
+                                <span class="topic-rank">1</span>
+                                <span class="topic-text">如何看待大学中的内卷现象？</span>
+                                <span class="topic-count">1,234人讨论</span>
+                            </div>
+                            <div class="topic-item">
+                                <span class="topic-rank">2</span>
+                                <span class="topic-text">室友之间如何建立良好关系？</span>
+                                <span class="topic-count">856人讨论</span>
+                            </div>
+                            <div class="topic-item">
+                                <span class="topic-rank">3</span>
+                                <span class="topic-text">大学生如何平衡学习和社交？</span>
+                                <span class="topic-count">2,341人讨论</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 智能推荐内容流 -->
+        <section class="content-section">
+            <div class="container">
+                <div class="section-header scroll-reveal">
+                    <h2 class="section-title">为你推荐</h2>
+                    <p class="section-subtitle">
+                        基于你的兴趣和情绪状态，为你推荐最有价值的内容
+                    </p>
+                </div>
+                
+                <div id="content-feed" class="scroll-reveal">
+                    <!-- 动态加载内容 -->
+                </div>
+            </div>
+        </section>
+
+        <!-- 核心功能介绍 -->
+        <section class="content-section">
+            <div class="container">
+                <div class="section-header scroll-reveal">
+                    <h2 class="section-title">核心功能</h2>
+                    <p class="section-subtitle">
+                        四大核心模块，全方位守护你的心理健康
+                    </p>
+                </div>
+                
+                <div class="grid grid-2">
+                    <div class="card card-hover scroll-reveal">
+                        <div class="card-icon">🌳</div>
+                        <h3>心声树洞</h3>
+                        <p>安全匿名的情感倾诉空间，AI智能生成温暖回应，让每一次倾诉都有回响。</p>
+                        <a href="voices.html" class="btn btn-primary">立即倾诉</a>
+                    </div>
+                    
+                    <div class="card card-hover scroll-reveal">
+                        <div class="card-icon">🗣️</div>
+                        <h3>共鸣广场</h3>
+                        <p>高质量话题讨论社区，观点碰撞、经验分享，找到志同道合的伙伴。</p>
+                        <a href="square.html" class="btn btn-primary">参与讨论</a>
+                    </div>
+                    
+                    <div class="card card-hover scroll-reveal">
+                        <div class="card-icon">🏥</div>
+                        <h3>心灵驿站</h3>
+                        <p>专业心理支持资源，解忧盲盒、导师答疑，轻量级心理服务。</p>
+                        <a href="station.html" class="btn btn-primary">探索资源</a>
+                    </div>
+                    
+                    <div class="card card-hover scroll-reveal">
+                        <div class="card-icon">👤</div>
+                        <h3>个人中心</h3>
+                        <p>情绪变化追踪、成长体系、成就徽章，记录你的心理健康历程。</p>
+                        <a href="profile.html" class="btn btn-primary">查看我的</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI技术特色 -->
+        <section class="content-section">
+            <div class="container">
+                <div class="section-header scroll-reveal">
+                    <h2 class="section-title">AI技术赋能</h2>
+                    <p class="section-subtitle">
+                        先进的人工智能技术，为你提供更精准、更温暖的情感支持
+                    </p>
+                </div>
+                
+                <div class="grid grid-3">
+                    <div class="card scroll-reveal">
+                        <div class="card-icon">🧠</div>
+                        <h4>情绪识别</h4>
+                        <p>基于BERT模型，准确识别8种情绪状态，准确率达95%以上</p>
+                    </div>
+                    
+                    <div class="card scroll-reveal">
+                        <div class="card-icon">💬</div>
+                        <h4>智能回复</h4>
+                        <p>生成温暖、专业的AI回应，提供情感支持和实用建议</p>
+                    </div>
+                    
+                    <div class="card scroll-reveal">
+                        <div class="card-icon">⚠️</div>
+                        <h4>危机预警</h4>
+                        <p>智能识别高危言论，及时推送专业心理援助资源</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 用户见证 -->
+        <section class="content-section">
+            <div class="container">
+                <div class="section-header scroll-reveal">
+                    <h2 class="section-title">用户见证</h2>
+                    <p class="section-subtitle">
+                        听听用户们怎么说
+                    </p>
+                </div>
+                
+                <div class="testimonial-grid">
+                    <div class="testimonial-card card scroll-reveal">
+                        <div class="testimonial-content">
+                            <p>"在回声谷，我第一次感受到被理解的温暖。AI的回复虽然来自机器，但却充满了人性的关怀。"</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar"></div>
+                            <div class="author-info">
+                                <span class="author-name">小雨</span>
+                                <span class="author-school">某大学大二学生</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card card scroll-reveal">
+                        <div class="testimonial-content">
+                            <p>"这里不仅有AI的温暖回应，还有很多同学的真诚建议。在这里，我不再感到孤单。"</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar"></div>
+                            <div class="author-info">
+                                <span class="author-name">阿明</span>
+                                <span class="author-school">某大学大四学生</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card card scroll-reveal">
+                        <div class="testimonial-content">
+                            <p>"作为一个内向的人，回声谷给了我一个安全的表达空间。这里的氛围真的很温暖。"</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar"></div>
+                            <div class="author-info">
+                                <span class="author-name">小芳</span>
+                                <span class="author-school">某大学大三学生</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 立即加入 -->
+        <section class="content-section">
+            <div class="container">
+                <div class="cta-section scroll-reveal">
+                    <h2 class="cta-title">准备好开始你的回声谷之旅了吗？</h2>
+                    <p class="cta-description">
+                        加入50,000+大学生的心灵社区<br>
+                        让每一次倾诉都有温暖的回响
+                    </p>
+                    <div class="cta-actions">
+                        <a href="voices.html" class="btn btn-primary btn-large">立即加入</a>
+                        <a href="#" class="btn btn-outline btn-large" onclick="showAboutModal()">了解更多</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">回声谷</div>
+                <p class="footer-description">
+                    用科技传递温暖，让共鸣消解孤独<br>
+                    你的声音，必有回响
+                </p>
+                <div class="footer-links">
+                    <a href="#" class="footer-link">关于我们</a>
+                    <a href="#" class="footer-link">使用条款</a>
+                    <a href="#" class="footer-link">隐私政策</a>
+                    <a href="#" class="footer-link">联系我们</a>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2025 回声谷. 用心守护每一份真诚.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 主要JavaScript -->
+    <script src="main.js"></script>
+    
+    <script>
+        // 页面特定的初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            // 初始化情绪图表
+            setTimeout(() => {
+                if (window.echoValleyApp) {
+                    window.echoValleyApp.initEmotionChart();
+                }
+            }, 500);
+            
+            // 添加额外的首页特定功能
+            initHomePageFeatures();
+        });
+        
+        function initHomePageFeatures() {
+            // 统计数字动画
+            const statNumbers = document.querySelectorAll('.home-stat-number');
+            statNumbers.forEach(stat => {
+                const finalValue = stat.textContent;
+                stat.textContent = '0';
+                
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            animateNumber(entry.target, finalValue);
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                });
+                
+                observer.observe(stat);
+            });
+            
+            // 话题列表样式
+            const topicItems = document.querySelectorAll('.topic-item');
+            topicItems.forEach((item, index) => {
+                item.style.display = 'flex';
+                item.style.alignItems = 'center';
+                item.style.padding = '12px';
+                item.style.borderRadius = '8px';
+                item.style.marginBottom = '8px';
+                item.style.background = 'rgba(74, 144, 164, 0.05)';
+                item.style.transition = 'all 0.3s ease';
+                
+                item.addEventListener('mouseenter', () => {
+                    item.style.background = 'rgba(74, 144, 164, 0.1)';
+                    item.style.transform = 'translateX(4px)';
+                });
+                
+                item.addEventListener('mouseleave', () => {
+                    item.style.background = 'rgba(74, 144, 164, 0.05)';
+                    item.style.transform = 'translateX(0)';
+                });
+                
+                const rank = item.querySelector('.topic-rank');
+                const text = item.querySelector('.topic-text');
+                const count = item.querySelector('.topic-count');
+                
+                if (rank) {
+                    rank.style.background = index < 3 ? '#4A90A4' : '#D5DBDB';
+                    rank.style.color = 'white';
+                    rank.style.borderRadius = '50%';
+                    rank.style.width = '24px';
+                    rank.style.height = '24px';
+                    rank.style.display = 'flex';
+                    rank.style.alignItems = 'center';
+                    rank.style.justifyContent = 'center';
+                    rank.style.fontSize = '12px';
+                    rank.style.fontWeight = 'bold';
+                    rank.style.marginRight = '12px';
+                }
+                
+                if (text) {
+                    text.style.flex = '1';
+                    text.style.fontWeight = '500';
+                    text.style.color = '#2C3E50';
+                }
+                
+                if (count) {
+                    count.style.fontSize = '12px';
+                    count.style.color = '#7F8C8D';
+                    count.style.marginLeft = '12px';
+                }
+            });
+            
+            // 功能卡片样式
+            const featureCards = document.querySelectorAll('.card');
+            featureCards.forEach(card => {
+                const icon = card.querySelector('.card-icon');
+                if (icon) {
+                    icon.style.fontSize = '3rem';
+                    icon.style.marginBottom = '1rem';
+                    icon.style.display = 'block';
+                }
+                
+                const title = card.querySelector('h3');
+                if (title) {
+                    title.style.fontSize = '1.25rem';
+                    title.style.fontWeight = '600';
+                    title.style.marginBottom = '1rem';
+                    title.style.color = '#2C3E50';
+                }
+                
+                const description = card.querySelector('p');
+                if (description) {
+                    description.style.color = '#7F8C8D';
+                    description.style.lineHeight = '1.6';
+                    description.style.marginBottom = '1.5rem';
+                }
+                
+                const button = card.querySelector('.btn');
+                if (button) {
+                    button.style.width = '100%';
+                }
+            });
+            
+            // 用户见证样式
+            const testimonials = document.querySelectorAll('.testimonial-card');
+            testimonials.forEach(card => {
+                card.style.maxWidth = '350px';
+                card.style.margin = '0 auto';
+                
+                const content = card.querySelector('.testimonial-content p');
+                if (content) {
+                    content.style.fontStyle = 'italic';
+                    content.style.color = '#7F8C8D';
+                    content.style.lineHeight = '1.6';
+                    content.style.marginBottom = '1.5rem';
+                }
+                
+                const author = card.querySelector('.testimonial-author');
+                if (author) {
+                    author.style.display = 'flex';
+                    author.style.alignItems = 'center';
+                    author.style.gap = '1rem';
+                    
+                    const avatar = author.querySelector('.author-avatar');
+                    if (avatar) {
+                        avatar.style.width = '50px';
+                        avatar.style.height = '50px';
+                        avatar.style.borderRadius = '50%';
+                        avatar.style.background = 'linear-gradient(135deg, #4A90A4, #E8A598)';
+                    }
+                    
+                    const name = author.querySelector('.author-name');
+                    if (name) {
+                        name.style.display = 'block';
+                        name.style.fontWeight = '600';
+                        name.style.color = '#2C3E50';
+                    }
+                    
+                    const school = author.querySelector('.author-school');
+                    if (school) {
+                        school.style.display = 'block';
+                        school.style.fontSize = '12px';
+                        school.style.color = '#7F8C8D';
+                    }
+                }
+            });
+            
+            // CTA区域样式
+            const ctaSection = document.querySelector('.cta-section');
+            if (ctaSection) {
+                ctaSection.style.background = 'linear-gradient(135deg, rgba(74, 144, 164, 0.1), rgba(232, 165, 152, 0.1))';
+                ctaSection.style.borderRadius = '16px';
+                ctaSection.style.padding = '3rem 2rem';
+                ctaSection.style.textAlign = 'center';
+                
+                const title = ctaSection.querySelector('.cta-title');
+                if (title) {
+                    title.style.fontSize = '2rem';
+                    title.style.fontWeight = '700';
+                    title.style.color = '#2C3E50';
+                    title.style.marginBottom = '1rem';
+                }
+                
+                const description = ctaSection.querySelector('.cta-description');
+                if (description) {
+                    description.style.fontSize = '1.1rem';
+                    description.style.color = '#7F8C8D';
+                    description.style.lineHeight = '1.6';
+                    description.style.marginBottom = '2rem';
+                }
+                
+                const actions = ctaSection.querySelector('.cta-actions');
+                if (actions) {
+                    actions.style.display = 'flex';
+                    actions.style.gap = '1rem';
+                    actions.style.justifyContent = 'center';
+                    actions.style.flexWrap = 'wrap';
+                }
+            }
+        }
+        
+        function animateNumber(element, finalValue) {
+            const isPercentage = finalValue.includes('%');
+            const isLargeNumber = finalValue.includes('k') || finalValue.includes('+');
+            const numericValue = parseInt(finalValue.replace(/[^\d]/g, ''));
+            
+            let current = 0;
+            const increment = numericValue / 50;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= numericValue) {
+                    current = numericValue;
+                    clearInterval(timer);
+                }
+                
+                let displayValue = Math.floor(current);
+                if (isLargeNumber && displayValue >= 1000) {
+                    displayValue = (displayValue / 1000).toFixed(1) + 'k';
+                }
+                if (isPercentage) {
+                    displayValue += '%';
+                }
+                if (isLargeNumber && finalValue.includes('+')) {
+                    displayValue += '+';
+                }
+                
+                element.textContent = displayValue;
+            }, 30);
+        }
+        
+        function showAboutModal() {
+            const modal = document.createElement('div');
+            modal.className = 'modal-overlay';
+            modal.innerHTML = `
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3>关于回声谷</h3>
+                        <button class="modal-close">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <p>回声谷是一个专为大学生打造的安全、温暖、深度的校园情感社区。</p>
+                        <br>
+                        <p>我们相信：</p>
+                        <ul>
+                            <li>每一声孤独，都值得被听见</li>
+                            <li>每一次思考，都会遇见知己</li>
+                            <li>每一份善意，都能激起涟漪</li>
+                        </ul>
+                        <br>
+                        <p>让我们一起，用回声谷连接每一颗需要温暖的心。</p>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+            
+            anime({
+                targets: modal,
+                opacity: [0, 1],
+                duration: 300,
+                easing: 'easeOutQuart'
+            });
+            
+            anime({
+                targets: modal.querySelector('.modal-content'),
+                scale: [0.8, 1],
+                opacity: [0, 1],
+                duration: 300,
+                easing: 'easeOutQuart'
+            });
+            
+            modal.querySelector('.modal-close').addEventListener('click', () => {
+                anime({
+                    targets: modal,
+                    opacity: [1, 0],
+                    duration: 300,
+                    easing: 'easeInQuart',
+                    complete: () => {
+                        modal.remove();
+                    }
+                });
+            });
+            
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.querySelector('.modal-close').click();
+                }
+            });
+        }
+    </script>
+    
+    <style>
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        .topic-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        @media (max-width: 768px) {
+            .testimonial-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</body>
+</html>

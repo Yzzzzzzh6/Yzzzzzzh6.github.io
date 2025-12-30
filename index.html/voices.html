@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>心声树洞 - 回声谷</title>
+    <meta name="description" content="安全匿名的情感倾诉空间，AI智能生成温暖回应，让每一次倾诉都有回响。">
+    
+    <!-- 字体引入 -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- 核心库引入 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js"></script>
+    
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-brand">
+                <img src="resources/logo.png" alt="回声谷" onerror="this.style.display='none'">
+                <span>回声谷</span>
+            </a>
+            
+            <button class="mobile-menu-toggle" aria-label="菜单">
+                <span>☰</span>
+            </button>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">首页</a></li>
+                <li><a href="voices.html" class="nav-link active">心声树洞</a></li>
+                <li><a href="square.html" class="nav-link">共鸣广场</a></li>
+                <li><a href="station.html" class="nav-link">心灵驿站</a></li>
+                <li><a href="profile.html" class="nav-link">个人中心</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 主内容区域 -->
+    <main class="main-content">
+        <!-- 页面标题区域 -->
+        <section class="page-header">
+            <div class="container">
+                <div class="page-title-content fade-in">
+                    <h1 class="page-title">心声树洞</h1>
+                    <p class="page-subtitle">
+                        在这里，你可以安全地倾诉内心的想法和感受<br>
+                        AI回声仪会为你生成温暖的回应，让每一个声音都有回响
+                    </p>
+                    <div class="page-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">12,345</span>
+                            <span class="stat-label">今日倾诉</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">95%</span>
+                            <span class="stat-label">AI回应率</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">24/7</span>
+                            <span class="stat-label">全天在线</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 发布新帖子 -->
+        <section class="content-section">
+            <div class="container">
+                <div class="post-form fade-in">
+                    <div class="form-header">
+                        <h2 class="form-title">🌳 向树洞倾诉</h2>
+                        <p class="form-description">
+                            请放心分享你的想法和感受，这里完全匿名，AI会为你提供温暖的回应
+                        </p>
+                    </div>
+                    
+                    <form id="post-form">
+                        <div class="form-group">
+                            <label class="form-label">选择分类</label>
+                            <select name="category" class="form-select" required>
+                                <option value="">请选择分类</option>
+                                <option value="study">学业压力</option>
+                                <option value="relationship">人际关系</option>
+                                <option value="emotion">情感困惑</option>
+                                <option value="family">家庭问题</option>
+                                <option value="career">就业焦虑</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">当前情绪</label>
+                            <select name="emotion" class="form-select" required>
+                                <option value="">请选择当前情绪</option>
+                                <option value="anxiety">焦虑</option>
+                                <option value="stress">压力</option>
+                                <option value="lonely">孤独</option>
+                                <option value="sad">难过</option>
+                                <option value="confused">困惑</option>
+                                <option value="happy">开心</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">倾诉内容</label>
+                            <textarea 
+                                name="content" 
+                                class="form-textarea" 
+                                placeholder="在这里写下你的想法、感受或困惑..."
+                                maxlength="1000"
+                                required
+                            ></textarea>
+                            <div class="form-help">
+                                <span id="word-count">0/1000</span>
+                                <span>内容将完全匿名处理</span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">隐私设置</label>
+                            <div class="privacy-options">
+                                <label class="radio-option">
+                                    <input type="radio" name="privacy" value="anonymous" checked>
+                                    <span>完全匿名</span>
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="privacy" value="school">
+                                    <span>仅对校友可见</span>
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="privacy" value="delay">
+                                    <span>24小时后公开</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-outline" onclick="clearForm()">
+                                清空内容
+                            </button>
+                            <button type="submit" class="btn btn-primary btn-large">
+                                🌟 发布倾诉
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- 内容筛选 -->
+        <section class="content-section">
+            <div class="container">
+                <div class="post-filters scroll-reveal">
+                    <button class="filter-btn active" data-filter="all">全部</button>
+                    <button class="filter-btn" data-filter="study">学业压力</button>
+                    <button class="filter-btn" data-filter="relationship">人际关系</button>
+                    <button class="filter-btn" data-filter="emotion">情感困惑</button>
+                    <button class="filter-btn" data-filter="family">家庭问题</button>
+                    <button class="filter-btn" data-filter="career">就业焦虑</button>
+                    <button class="filter-btn" data-filter="latest">最新发布</button>
+                    <button class="filter-btn" data-filter="popular">最多共鸣</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 帖子列表 -->
+        <section class="content-section">
+            <div class="container">
+                <div class="posts-header scroll-reveal">
+                    <h2>🌸 大家的心声</h2>
+                    <p>以下是同学们最近的倾诉，让我们一起倾听和支持</p>
+                </div>
+                
+                <div id="posts-container" class="scroll-reveal">
+                    <!-- 动态加载帖子内容 -->
+                </div>
+                
+                <div id="loading-indicator" class="loading-indicator" style="display: none;">
+                    <div class="loading-spinner"></div>
+                    <span>加载更多内容...</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 情绪星系可视化 -->
+        <section class="content-section">
+            <div class="container">
+                <div class="section-header scroll-reveal">
+                    <h2 class="section-title">🌌 情绪星系</h2>
+                    <p class="section-subtitle">
+                        将抽象的情绪转化为美丽的视觉图案，探索情感的无限可能
+                    </p>
+                </div>
+                
+                <div class="grid grid-2">
+                    <div class="card scroll-reveal">
+                        <div class="card-header">
+                            <h3>我的情绪星系</h3>
+                        </div>
+                        <div id="emotion-galaxy" style="height: 300px;">
+                            <!-- p5.js 情绪可视化 -->
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn btn-primary" onclick="generateNewGalaxy()">
+                                生成新的星系
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="card scroll-reveal">
+                        <div class="card-header">
+                            <h3>情绪统计</h3>
+                        </div>
+                        <div class="emotion-stats">
+                            <div class="emotion-item">
+                                <div class="emotion-color" style="background: #E8A598;"></div>
+                                <div class="emotion-info">
+                                    <span class="emotion-name">焦虑</span>
+                                    <span class="emotion-count">35%</span>
+                                </div>
+                            </div>
+                            <div class="emotion-item">
+                                <div class="emotion-color" style="background: #4A90A4;"></div>
+                                <div class="emotion-info">
+                                    <span class="emotion-name">开心</span>
+                                    <span class="emotion-count">25%</span>
+                                </div>
+                            </div>
+                            <div class="emotion-item">
+                                <div class="emotion-color" style="background: #F4B084;"></div>
+                                <div class="emotion-info">
+                                    <span class="emotion-name">压力</span>
+                                    <span class="emotion-count">20%</span>
+                                </div>
+                            </div>
+                            <div class="emotion-item">
+                                <div class="emotion-color" style="background: #85C1E9;"></div>
+                                <div class="emotion-info">
+                                    <span class="emotion-name">孤独</span>
+                                    <span class="emotion-count">12%</span>
+                                </div>
+                            </div>
+                            <div class="emotion-item">
+                                <div class="emotion-color" style="background: #D5DBDB;"></div>
+                                <div class="emotion-info">
+                                    <span class="emotion-name">其他</span>
+                                    <span class="emotion-count">8%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 使用指南 -->
+        <section class="content-section">
+            <div class="container">
+                <div class="section-header scroll-reveal">
+                    <h2 class="section-title">💡 使用指南</h2>
+                    <p class="section-subtitle">
+                        了解如何更好地使用心声树洞功能
+                    </p>
+                </div>
+                
+                <div class="grid grid-3">
+                    <div class="guide-card card scroll-reveal">
+                        <div class="guide-icon">📝</div>
+                        <h4>如何倾诉</h4>
+                        <p>选择合适的分类和情绪，详细描述你的感受，AI会为你生成温暖的回应。</p>
+                    </div>
+                    
+                    <div class="guide-card card scroll-reveal">
+                        <div class="guide-icon">🔒</div>
+                        <h4>隐私保护</h4>
+                        <p>所有内容完全匿名处理，你可以选择不同的隐私级别，确保信息安全。</p>
+                    </div>
+                    
+                    <div class="guide-card card scroll-reveal">
+                        <div class="guide-icon">🤝</div>
+                        <h4>社区支持</h4>
+                        <p>除了AI回应，你还可以获得来自同学们的真诚建议和支持。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">回声谷</div>
+                <p class="footer-description">
+                    用科技传递温暖，让共鸣消解孤独<br>
+                    你的声音，必有回响
+                </p>
+                <div class="footer-links">
+                    <a href="#" class="footer-link">关于我们</a>
+                    <a href="#" class="footer-link">使用条款</a>
+                    <a href="#" class="footer-link">隐私政策</a>
+                    <a href="#" class="footer-link">联系我们</a>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2025 回声谷. 用心守护每一份真诚.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 主要JavaScript -->
+    <script src="main.js"></script>
+    
+    <script>
+        // 页面特定的初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            initVoicesPage();
+            initEmotionGalaxy();
+        });
+        
+        function initVoicesPage() {
+            // 初始化筛选功能
+            initPostFilters();
+            
+            // 初始化表单
+            initPostForm();
+            
+            // 初始化情绪统计
+            initEmotionStats();
+        }
+        
+        function initPostFilters() {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // 移除所有active状态
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    // 添加当前active状态
+                    btn.classList.add('active');
+                    
+                    // 执行筛选
+                    const filter = btn.dataset.filter;
+                    filterPosts(filter);
+                    
+                    // 按钮动画
+                    anime({
+                        targets: btn,
+                        scale: [1, 0.95, 1],
+                        duration: 200,
+                        easing: 'easeOutQuart'
+                    });
+                });
+            });
+        }
+        
+        function filterPosts(filter) {
+            const posts = document.querySelectorAll('.post-card');
+            
+            posts.forEach(post => {
+                let shouldShow = true;
+                
+                if (filter !== 'all') {
+                    // 这里可以根据filter类型来筛选帖子
+                    // 简化实现，显示所有帖子
+                    shouldShow = true;
+                }
+                
+                if (shouldShow) {
+                    post.style.display = 'block';
+                    anime({
+                        targets: post,
+                        opacity: [0, 1],
+                        translateY: [20, 0],
+                        duration: 300,
+                        easing: 'easeOutQuart'
+                    });
+                } else {
+                    anime({
+                        targets: post,
+                        opacity: [1, 0],
+                        translateY: [0, -20],
+                        duration: 300,
+                        easing: 'easeInQuart',
+                        complete: () => {
+                            post.style.display = 'none';
+                        }
+                    });
+                }
+            });
+        }
+        
+        function initPostForm() {
+            // 字数统计
+            const contentInput = document.querySelector('textarea[name="content"]');
+            const wordCount = document.getElementById('word-count');
+            
+            if (contentInput && wordCount) {
+                contentInput.addEventListener('input', () => {
+                    const count = contentInput.value.length;
+                    wordCount.textContent = `${count}/1000`;
+                    wordCount.style.color = count > 1000 ? '#E74C3C' : '#7F8C8D';
+                });
+            }
+            
+            // 表单验证和提交
+            const form = document.getElementById('post-form');
+            if (form) {
+                form.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    
+                    const formData = new FormData(form);
+                    const content = formData.get('content');
+                    const category = formData.get('category');
+                    const emotion = formData.get('emotion');
+                    
+                    if (!content || content.trim().length < 10) {
+                        showNotification('内容至少需要10个字符', 'error');
+                        return;
+                    }
+                    
+                    if (!category || !emotion) {
+                        showNotification('请选择分类和情绪', 'error');
+                        return;
+                    }
+                    
+                    // 提交成功动画
+                    anime({
+                        targets: form,
+                        scale: [1, 0.98, 1],
+                        duration: 300,
+                        easing: 'easeOutQuart'
+                    });
+                    
+                    showNotification('发布成功！AI正在生成温暖的回应...', 'success');
+                    
+                    // 清空表单
+                    setTimeout(() => {
+                        form.reset();
+                        wordCount.textContent = '0/1000';
+                    }, 2000);
+                });
+            }
+        }
+        
+        function clearForm() {
+            const form = document.getElementById('post-form');
+            const wordCount = document.getElementById('word-count');
+            
+            if (form) {
+                form.reset();
+            }
+            
+            if (wordCount) {
+                wordCount.textContent = '0/1000';
+            }
+            
+            showNotification('表单已清空', 'info');
+        }
+        
+        function initEmotionStats() {
+            const emotionItems = document.querySelectorAll('.emotion-item');
+            emotionItems.forEach((item, index) => {
+                item.style.display = 'flex';
+                item.style.alignItems = 'center';
+                item.style.padding = '12px';
+                item.style.borderRadius = '8px';
+                item.style.marginBottom = '8px';
+                item.style.background = 'rgba(0, 0, 0, 0.02)';
+                item.style.transition = 'all 0.3s ease';
+                
+                const color = item.querySelector('.emotion-color');
+                const name = item.querySelector('.emotion-name');
+                const count = item.querySelector('.emotion-count');
+                
+                if (color) {
+                    color.style.width = '20px';
+                    color.style.height = '20px';
+                    color.style.borderRadius = '50%';
+                    color.style.marginRight = '12px';
+                }
+                
+                if (name) {
+                    name.style.flex = '1';
+                    name.style.fontWeight = '500';
+                    name.style.color = '#2C3E50';
+                }
+                
+                if (count) {
+                    count.style.fontWeight = '600';
+                    count.style.color = '#4A90A4';
+                }
+                
+                // 悬停效果
+                item.addEventListener('mouseenter', () => {
+                    item.style.background = 'rgba(0, 0, 0, 0.05)';
+                    item.style.transform = 'translateX(4px)';
+                });
+                
+                item.addEventListener('mouseleave', () => {
+                    item.style.background = 'rgba(0, 0, 0, 0.02)';
+                    item.style.transform = 'translateX(0)';
+                });
+                
+                // 入场动画
+                anime({
+                    targets: item,
+                    opacity: [0, 1],
+                    translateX: [-20, 0],
+                    duration: 500,
+                    delay: index * 100,
+                    easing: 'easeOutQuart'
+                });
+            });
+        }
+        
+        function initEmotionGalaxy() {
+            // p5.js 情绪星系可视化
+            const galaxyContainer = document.getElementById('emotion-galaxy');
+            if (!galaxyContainer) return;
+            
+            // 创建p5实例
+            const sketch = (p) => {
+                let particles = [];
+                let emotions = ['anxiety', 'stress', 'lonely', 'sad', 'happy'];
+                let emotionColors = {
+                    'anxiety': '#E8A598',
+                    'stress': '#F4B084',
+                    'lonely': '#85C1E9',
+                    'sad': '#D5DBDB',
+                    'happy': '#4A90A4'
+                };
+                
+                p.setup = () => {
+                    const canvas = p.createCanvas(galaxyContainer.offsetWidth, 300);
+                    canvas.parent('emotion-galaxy');
+                    
+                    // 初始化粒子
+                    for (let i = 0; i < 100; i++) {
+                        particles.push({
+                            x: p.random(p.width),
+                            y: p.random(p.height),
+                            vx: p.random(-1, 1),
+                            vy: p.random(-1, 1),
+                            emotion: p.random(emotions),
+                            size: p.random(2, 8),
+                            alpha: p.random(0.3, 1)
+                        });
+                    }
+                };
+                
+                p.draw = () => {
+                    p.clear();
+                    
+                    // 绘制连接线
+                    p.stroke(74, 144, 164, 50);
+                    p.strokeWeight(1);
+                    for (let i = 0; i < particles.length; i++) {
+                        for (let j = i + 1; j < particles.length; j++) {
+                            let d = p.dist(particles[i].x, particles[i].y, particles[j].x, particles[j].y);
+                            if (d < 50) {
+                                p.line(particles[i].x, particles[i].y, particles[j].x, particles[j].y);
+                            }
+                        }
+                    }
+                    
+                    // 绘制粒子
+                    particles.forEach(particle => {
+                        let color = emotionColors[particle.emotion];
+                        let rgb = hexToRgb(color);
+                        
+                        p.fill(rgb.r, rgb.g, rgb.b, particle.alpha * 255);
+                        p.noStroke();
+                        p.ellipse(particle.x, particle.y, particle.size);
+                        
+                        // 更新位置
+                        particle.x += particle.vx;
+                        particle.y += particle.vy;
+                        
+                        // 边界检测
+                        if (particle.x < 0 || particle.x > p.width) particle.vx *= -1;
+                        if (particle.y < 0 || particle.y > p.height) particle.vy *= -1;
+                    });
+                };
+                
+                p.windowResized = () => {
+                    p.resizeCanvas(galaxyContainer.offsetWidth, 300);
+                };
+            };
+            
+            new p5(sketch);
+        }
+        
+        function generateNewGalaxy() {
+            // 重新生成星系
+            const button = event.target;
+            anime({
+                targets: button,
+                rotate: [0, 360],
+                scale: [1, 0.9, 1],
+                duration: 800,
+                easing: 'easeOutQuart'
+            });
+            
+            showNotification('正在生成新的情绪星系...', 'info');
+            
+            // 这里可以触发p5.js重新生成
+        }
+        
+        function hexToRgb(hex) {
+            const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+            return result ? {
+                r: parseInt(result[1], 16),
+                g: parseInt(result[2], 16),
+                b: parseInt(result[3], 16)
+            } : null;
+        }
+        
+        function showNotification(message, type = 'info') {
+            if (window.echoValleyApp && window.echoValleyApp.showNotification) {
+                window.echoValleyApp.showNotification(message, type);
+            }
+        }
+    </script>
+    
+    <style>
+        /* 页面特定样式 */
+        .page-header {
+            background: linear-gradient(135deg, rgba(74, 144, 164, 0.1), rgba(232, 165, 152, 0.1));
+            padding: 4rem 0 2rem;
+            text-align: center;
+        }
+        
+        .page-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #2C3E50;
+            margin-bottom: 1rem;
+        }
+        
+        .page-subtitle {
+            font-size: 1.1rem;
+            color: #7F8C8D;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+        
+        .page-stats {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            display: block;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #4A90A4;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: #7F8C8D;
+        }
+        
+        .posts-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .posts-header h2 {
+            font-size: 1.8rem;
+            color: #2C3E50;
+            margin-bottom: 0.5rem;
+        }
+        
+        .posts-header p {
+            color: #7F8C8D;
+        }
+        
+        .form-help {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            color: #7F8C8D;
+        }
+        
+        .privacy-options {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border: 2px solid #D5DBDB;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .radio-option:hover {
+            border-color: #4A90A4;
+            background: rgba(74, 144, 164, 0.05);
+        }
+        
+        .radio-option input[type="radio"] {
+            margin: 0;
+        }
+        
+        .form-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-end;
+            margin-top: 2rem;
+        }
+        
+        .guide-card {
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .guide-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .guide-card h4 {
+            font-size: 1.2rem;
+            color: #2C3E50;
+            margin-bottom: 1rem;
+        }
+        
+        .guide-card p {
+            color: #7F8C8D;
+            line-height: 1.6;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .page-stats {
+                gap: 1rem;
+            }
+            
+            .stat-number {
+                font-size: 1.5rem;
+            }
+            
+            .privacy-options {
+                flex-direction: column;
+            }
+            
+            .form-actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+</body>
+</html>

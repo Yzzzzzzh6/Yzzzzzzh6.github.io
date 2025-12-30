@@ -1,0 +1,1401 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>共鸣广场 - 回声谷</title>
+    <meta name="description" content="高质量话题讨论社区，观点碰撞、经验分享，找到志同道合的伙伴。">
+    
+    <!-- 字体引入 -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- 核心库引入 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+    
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-brand">
+                <img src="resources/logo.png" alt="回声谷" onerror="this.style.display='none'">
+                <span>回声谷</span>
+            </a>
+            
+            <button class="mobile-menu-toggle" aria-label="菜单">
+                <span>☰</span>
+            </button>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">首页</a></li>
+                <li><a href="voices.html" class="nav-link">心声树洞</a></li>
+                <li><a href="square.html" class="nav-link active">共鸣广场</a></li>
+                <li><a href="station.html" class="nav-link">心灵驿站</a></li>
+                <li><a href="profile.html" class="nav-link">个人中心</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 主内容区域 -->
+    <main class="main-content">
+        <!-- 页面标题区域 -->
+        <section class="page-header">
+            <div class="container">
+                <div class="page-title-content fade-in">
+                    <h1 class="page-title">共鸣广场</h1>
+                    <p class="page-subtitle">
+                        在这里，思想碰撞，观点交锋<br>
+                        找到志同道合的伙伴，一起探讨成长中的困惑
+                    </p>
+                    <div class="page-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">2,341</span>
+                            <span class="stat-label">热门话题</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">156,789</span>
+                            <span class="stat-label">参与讨论</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">78%</span>
+                            <span class="stat-label">共鸣率</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 话题搜索和筛选 -->
+        <section class="content-section">
+            <div class="container">
+                <div class="search-filter-bar fade-in">
+                    <div class="search-box">
+                        <input type="text" class="search-input" placeholder="搜索感兴趣的话题...">
+                        <button class="search-btn">🔍</button>
+                    </div>
+                    <div class="filter-tabs">
+                        <button class="filter-tab active" data-category="all">全部</button>
+                        <button class="filter-tab" data-category="study">学习</button>
+                        <button class="filter-tab" data-category="relationship">人际</button>
+                        <button class="filter-tab" data-category="emotion">情感</button>
+                        <button class="filter-tab" data-category="career">就业</button>
+                        <button class="filter-tab" data-category="hot">热门</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 热门话题榜 -->
+        <section class="content-section">
+            <div class="container">
+                <div class="grid grid-3">
+                    <div class="card scroll-reveal">
+                        <div class="card-header">
+                            <h3>🔥 本周热门</h3>
+                        </div>
+                        <div class="hot-topics-list">
+                            <div class="hot-topic-item">
+                                <div class="topic-rank">1</div>
+                                <div class="topic-content">
+                                    <h4>如何看待大学中的内卷现象？</h4>
+                                    <p>1,234人讨论 · 78%同类困惑</p>
+                                </div>
+                            </div>
+                            <div class="hot-topic-item">
+                                <div class="topic-rank">2</div>
+                                <div class="topic-content">
+                                    <h4>室友之间如何建立良好关系？</h4>
+                                    <p>856人讨论 · 65%同类困惑</p>
+                                </div>
+                            </div>
+                            <div class="hot-topic-item">
+                                <div class="topic-rank">3</div>
+                                <div class="topic-content">
+                                    <h4>大学生如何平衡学习和社交？</h4>
+                                    <p>2,341人讨论 · 82%同类困惑</p>
+                                </div>
+                            </div>
+                            <div class="hot-topic-item">
+                                <div class="topic-rank">4</div>
+                                <div class="topic-content">
+                                    <h4>面对毕业即失业的压力</h4>
+                                    <p>1,567人讨论 · 71%同类困惑</p>
+                                </div>
+                            </div>
+                            <div class="hot-topic-item">
+                                <div class="topic-rank">5</div>
+                                <div class="topic-content">
+                                    <h4>异地恋能否经得起考验？</h4>
+                                    <p>987人讨论 · 59%同类困惑</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card scroll-reveal">
+                        <div class="card-header">
+                            <h3>📊 话题统计</h3>
+                        </div>
+                        <div id="topic-chart" style="height: 250px;"></div>
+                    </div>
+                    
+                    <div class="card scroll-reveal">
+                        <div class="card-header">
+                            <h3>🏆 回声认证</h3>
+                        </div>
+                        <div class="certification-list">
+                            <div class="cert-item">
+                                <div class="cert-avatar">🥇</div>
+                                <div class="cert-info">
+                                    <span class="cert-name">心理咨询师小王</span>
+                                    <span class="cert-badge">金话筒认证</span>
+                                </div>
+                            </div>
+                            <div class="cert-item">
+                                <div class="cert-avatar">🥈</div>
+                                <div class="cert-info">
+                                    <span class="cert-name">学长阿明</span>
+                                    <span class="cert-badge">经验分享者</span>
+                                </div>
+                            </div>
+                            <div class="cert-item">
+                                <div class="cert-avatar">🥉</div>
+                                <div class="cert-info">
+                                    <span class="cert-name">心理委员小雨</span>
+                                    <span class="cert-badge">活跃回答者</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 话题列表 -->
+        <section class="content-section">
+            <div class="container">
+                <div class="section-header scroll-reveal">
+                    <h2 class="section-title">🎯 热门话题</h2>
+                    <p class="section-subtitle">
+                        参与讨论，分享观点，找到共鸣
+                    </p>
+                </div>
+                
+                <div id="topics-container" class="scroll-reveal">
+                    <!-- 动态加载话题内容 -->
+                </div>
+            </div>
+        </section>
+
+        <!-- 观点碰撞区 -->
+        <section class="content-section">
+            <div class="container">
+                <div class="section-header scroll-reveal">
+                    <h2 class="section-title">⚔️ 观点碰撞</h2>
+                    <p class="section-subtitle">
+                        选择你的立场，参与激烈的观点辩论
+                    </p>
+                </div>
+                
+                <div class="debate-section fade-in">
+                    <div class="debate-header">
+                        <h3 class="debate-title">大学生应该更注重学习还是社交？</h3>
+                        <p class="debate-description">
+                            这是一个困扰很多大学生的问题，你怎么看？
+                        </p>
+                    </div>
+                    
+                    <div class="debate-stats">
+                        <div class="debate-side debate-support" data-side="support">
+                            <div class="side-icon">👍</div>
+                            <div class="side-title">支持学习</div>
+                            <div class="side-count">1,234人</div>
+                            <div class="side-percentage">52%</div>
+                        </div>
+                        
+                        <div class="debate-side debate-oppose" data-side="oppose">
+                            <div class="side-icon">👎</div>
+                            <div class="side-title">支持社交</div>
+                            <div class="side-count">1,145人</div>
+                            <div class="side-percentage">48%</div>
+                        </div>
+                    </div>
+                    
+                    <div class="debate-actions">
+                        <button class="btn btn-primary" onclick="joinDebate()">
+                            参与辩论
+                        </button>
+                        <button class="btn btn-outline" onclick="viewDebateDetails()">
+                            查看详情
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="debate-section fade-in">
+                    <div class="debate-header">
+                        <h3 class="debate-title">是否应该为了保研而放弃兴趣爱好？</h3>
+                        <p class="debate-description">
+                            保研和兴趣爱好的平衡，你怎么看？
+                        </p>
+                    </div>
+                    
+                    <div class="debate-stats">
+                        <div class="debate-side debate-support" data-side="support">
+                            <div class="side-icon">👍</div>
+                            <div class="side-title">应该放弃</div>
+                            <div class="side-count">678人</div>
+                            <div class="side-percentage">34%</div>
+                        </div>
+                        
+                        <div class="debate-side debate-oppose" data-side="oppose">
+                            <div class="side-icon">👎</div>
+                            <div class="side-title">不应该放弃</div>
+                            <div class="side-count">1,322人</div>
+                            <div class="side-percentage">66%</div>
+                        </div>
+                    </div>
+                    
+                    <div class="debate-actions">
+                        <button class="btn btn-primary" onclick="joinDebate()">
+                            参与辩论
+                        </button>
+                        <button class="btn btn-outline" onclick="viewDebateDetails()">
+                            查看详情
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 回声值排行榜 -->
+        <section class="content-section">
+            <div class="container">
+                <div class="grid grid-2">
+                    <div class="card scroll-reveal">
+                        <div class="card-header">
+                            <h3>📈 本周回声值排行</h3>
+                        </div>
+                        <div class="echo-ranking">
+                            <div class="ranking-item">
+                                <div class="ranking-rank">1</div>
+                                <div class="ranking-avatar">👤</div>
+                                <div class="ranking-info">
+                                    <span class="ranking-name">心理咨询师小王</span>
+                                    <span class="ranking-echo">回声值: 2,456</span>
+                                </div>
+                            </div>
+                            <div class="ranking-item">
+                                <div class="ranking-rank">2</div>
+                                <div class="ranking-avatar">👤</div>
+                                <div class="ranking-info">
+                                    <span class="ranking-name">学长阿明</span>
+                                    <span class="ranking-echo">回声值: 2,123</span>
+                                </div>
+                            </div>
+                            <div class="ranking-item">
+                                <div class="ranking-rank">3</div>
+                                <div class="ranking-avatar">👤</div>
+                                <div class="ranking-info">
+                                    <span class="ranking-name">心理委员小雨</span>
+                                    <span class="ranking-echo">回声值: 1,987</span>
+                                </div>
+                            </div>
+                            <div class="ranking-item">
+                                <div class="ranking-rank">4</div>
+                                <div class="ranking-avatar">👤</div>
+                                <div class="ranking-info">
+                                    <span class="ranking-name">热心同学小李</span>
+                                    <span class="ranking-echo">回声值: 1,654</span>
+                                </div>
+                            </div>
+                            <div class="ranking-item">
+                                <div class="ranking-rank">5</div>
+                                <div class="ranking-avatar">👤</div>
+                                <div class="ranking-info">
+                                    <span class="ranking-name">经验分享者</span>
+                                    <span class="ranking-echo">回声值: 1,432</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card scroll-reveal">
+                        <div class="card-header">
+                            <h3>🎯 推荐话题</h3>
+                        </div>
+                        <div class="recommended-topics">
+                            <div class="topic-card-small">
+                                <h4>如何克服社交恐惧？</h4>
+                                <p>234人正在讨论</p>
+                                <span class="match-rate">匹配度: 85%</span>
+                            </div>
+                            <div class="topic-card-small">
+                                <h4>考研还是工作？</h4>
+                                <p>567人正在讨论</p>
+                                <span class="match-rate">匹配度: 72%</span>
+                            </div>
+                            <div class="topic-card-small">
+                                <h4>如何处理宿舍矛盾？</h4>
+                                <p>189人正在讨论</p>
+                                <span class="match-rate">匹配度: 68%</span>
+                            </div>
+                            <div class="topic-card-small">
+                                <h4>大学生如何理财？</h4>
+                                <p>345人正在讨论</p>
+                                <span class="match-rate">匹配度: 61%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 话题创建 -->
+        <section class="content-section">
+            <div class="container">
+                <div class="cta-section scroll-reveal">
+                    <h2 class="cta-title">有想要讨论的话题吗？</h2>
+                    <p class="cta-description">
+                        发起新的话题讨论，邀请大家一起参与<br>
+                        让不同的声音在这里碰撞出思想的火花
+                    </p>
+                    <div class="cta-actions">
+                        <button class="btn btn-primary btn-large" onclick="createTopic()">
+                            发起话题
+                        </button>
+                        <button class="btn btn-outline btn-large" onclick="viewGuidelines()">
+                            话题规范
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">回声谷</div>
+                <p class="footer-description">
+                    用科技传递温暖，让共鸣消解孤独<br>
+                    你的声音，必有回响
+                </p>
+                <div class="footer-links">
+                    <a href="#" class="footer-link">关于我们</a>
+                    <a href="#" class="footer-link">使用条款</a>
+                    <a href="#" class="footer-link">隐私政策</a>
+                    <a href="#" class="footer-link">联系我们</a>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2025 回声谷. 用心守护每一份真诚.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 主要JavaScript -->
+    <script src="main.js"></script>
+    
+    <script>
+        // 页面特定的初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            initSquarePage();
+        });
+        
+        function initSquarePage() {
+            // 初始化搜索和筛选
+            initSearchFilter();
+            
+            // 初始化话题图表
+            initTopicChart();
+            
+            // 初始化话题列表
+            initTopicsList();
+            
+            // 初始化辩论功能
+            initDebateFeature();
+            
+            // 初始化排行榜
+            initRankingList();
+        }
+        
+        function initSearchFilter() {
+            // 搜索功能
+            const searchInput = document.querySelector('.search-input');
+            const searchBtn = document.querySelector('.search-btn');
+            
+            if (searchBtn) {
+                searchBtn.addEventListener('click', () => {
+                    const query = searchInput.value.trim();
+                    if (query) {
+                        searchTopics(query);
+                    }
+                });
+            }
+            
+            if (searchInput) {
+                searchInput.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        searchBtn.click();
+                    }
+                });
+            }
+            
+            // 筛选标签
+            const filterTabs = document.querySelectorAll('.filter-tab');
+            filterTabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    filterTabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                    
+                    const category = tab.dataset.category;
+                    filterTopicsByCategory(category);
+                    
+                    // 标签动画
+                    anime({
+                        targets: tab,
+                        scale: [1, 0.95, 1],
+                        duration: 200,
+                        easing: 'easeOutQuart'
+                    });
+                });
+            });
+        }
+        
+        function searchTopics(query) {
+            showNotification(`正在搜索"${query}"相关的话题...`, 'info');
+            
+            // 这里可以实现实际的搜索逻辑
+            setTimeout(() => {
+                showNotification(`找到 ${Math.floor(Math.random() * 50) + 10} 个相关话题`, 'success');
+            }, 1000);
+        }
+        
+        function filterTopicsByCategory(category) {
+            showNotification(`正在筛选${category === 'all' ? '全部' : category}话题...`, 'info');
+            
+            // 这里可以实现实际的筛选逻辑
+        }
+        
+        function initTopicChart() {
+            const chartContainer = document.getElementById('topic-chart');
+            if (!chartContainer) return;
+            
+            const chart = echarts.init(chartContainer);
+            const option = {
+                tooltip: {
+                    trigger: 'item',
+                    formatter: '{a} <br/>{b}: {c} ({d}%)'
+                },
+                series: [{
+                    name: '话题分类',
+                    type: 'pie',
+                    radius: ['40%', '70%'],
+                    center: ['50%', '50%'],
+                    data: [
+                        { value: 35, name: '学习相关', itemStyle: { color: '#4A90A4' } },
+                        { value: 25, name: '人际关系', itemStyle: { color: '#E8A598' } },
+                        { value: 20, name: '情感困惑', itemStyle: { color: '#85C1E9' } },
+                        { value: 12, name: '就业实习', itemStyle: { color: '#F4B084' } },
+                        { value: 8, name: '其他', itemStyle: { color: '#D5DBDB' } }
+                    ],
+                    emphasis: {
+                        itemStyle: {
+                            shadowBlur: 10,
+                            shadowOffsetX: 0,
+                            shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        }
+                    }
+                }]
+            };
+            chart.setOption(option);
+        }
+        
+        function initTopicsList() {
+            const topicsContainer = document.getElementById('topics-container');
+            if (!topicsContainer) return;
+            
+            const mockTopics = [
+                {
+                    id: 1,
+                    title: '如何看待大学中的内卷现象？',
+                    description: '最近感觉周围的同学都在疯狂学习，参加各种竞赛，我也被这种氛围影响，但是真的很累...',
+                    participants: 1234,
+                    sameConfusion: 78,
+                    category: '学习',
+                    hot: true,
+                    author: '心理咨询师小王',
+                    replies: 89,
+                    lastActivity: '2小时前'
+                },
+                {
+                    id: 2,
+                    title: '室友之间如何建立良好的关系？',
+                    description: '和室友的作息不太一样，他们喜欢熬夜打游戏，我需要安静的环境学习，怎么沟通比较好？',
+                    participants: 856,
+                    sameConfusion: 65,
+                    category: '人际',
+                    hot: true,
+                    author: '学长阿明',
+                    replies: 67,
+                    lastActivity: '4小时前'
+                },
+                {
+                    id: 3,
+                    title: '大学生如何平衡学习和社交？',
+                    description: '想要在学习上取得好成绩，但又不想错过大学的社交生活，这个平衡点在哪里？',
+                    participants: 2341,
+                    sameConfusion: 82,
+                    category: '学习',
+                    hot: true,
+                    author: '心理委员小雨',
+                    replies: 156,
+                    lastActivity: '6小时前'
+                },
+                {
+                    id: 4,
+                    title: '面对毕业即失业的压力，我们该怎么办？',
+                    description: '投了很多简历都没有回应，看到同学们一个个找到工作，心里很焦虑...',
+                    participants: 1567,
+                    sameConfusion: 71,
+                    category: '就业',
+                    hot: false,
+                    author: '热心同学小李',
+                    replies: 98,
+                    lastActivity: '8小时前'
+                },
+                {
+                    id: 5,
+                    title: '异地恋能否经得起时间和距离的考验？',
+                    description: '和女朋友异地两年了，感情越来越淡，不知道还能不能坚持下去...',
+                    participants: 987,
+                    sameConfusion: 59,
+                    category: '情感',
+                    hot: false,
+                    author: '经验分享者',
+                    replies: 76,
+                    lastActivity: '12小时前'
+                },
+                {
+                    id: 6,
+                    title: '如何克服社交恐惧，主动与人交流？',
+                    description: '性格比较内向，在人群中总是不敢开口，想要改变但又不知道从何开始...',
+                    participants: 1456,
+                    sameConfusion: 73,
+                    category: '人际',
+                    hot: true,
+                    author: '心理咨询师小王',
+                    replies: 134,
+                    lastActivity: '1天前'
+                }
+            ];
+            
+            topicsContainer.innerHTML = mockTopics.map(topic => createTopicHTML(topic)).join('');
+            
+            // 添加交互事件
+            topicsContainer.querySelectorAll('.topic-card').forEach(card => {
+                card.addEventListener('click', () => {
+                    const topicId = card.dataset.topicId;
+                    openTopicDetail(topicId);
+                });
+            });
+        }
+        
+        function createTopicHTML(topic) {
+            return `
+                <div class="topic-card card-hover" data-topic-id="${topic.id}">
+                    <div class="topic-header">
+                        <div class="topic-meta">
+                            ${topic.hot ? '<span class="hot-tag">热门</span>' : ''}
+                            <span class="category-tag">${topic.category}</span>
+                            <span class="last-activity">${topic.lastActivity}</span>
+                        </div>
+                        <div class="topic-stats">
+                            <span class="participants">${topic.participants}人参与</span>
+                            <span class="same-confusion">${topic.sameConfusion}%同类困惑</span>
+                        </div>
+                    </div>
+                    
+                    <div class="topic-content">
+                        <h3 class="topic-title">${topic.title}</h3>
+                        <p class="topic-description">${topic.description}</p>
+                    </div>
+                    
+                    <div class="topic-footer">
+                        <div class="topic-author">
+                            <span class="author-name">发起人: ${topic.author}</span>
+                        </div>
+                        <div class="topic-actions">
+                            <span class="replies-count">${topic.replies}条回复</span>
+                            <button class="btn btn-primary btn-sm">参与讨论</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+        
+        function openTopicDetail(topicId) {
+            showNotification('正在打开话题详情...', 'info');
+            
+            // 这里可以实现打开话题详情的逻辑
+            setTimeout(() => {
+                showModal('topic-detail', {
+                    title: '话题详情',
+                    content: `
+                        <div class="topic-detail-content">
+                            <h3>话题详情页面</h3>
+                            <p>这里会显示话题的详细内容和所有回复。</p>
+                            <p>话题ID: ${topicId}</p>
+                        </div>
+                    `
+                });
+            }, 500);
+        }
+        
+        function initDebateFeature() {
+            const debateSides = document.querySelectorAll('.debate-side');
+            debateSides.forEach(side => {
+                side.addEventListener('click', () => {
+                    // 移除其他选中状态
+                    debateSides.forEach(s => s.classList.remove('selected'));
+                    // 添加选中状态
+                    side.classList.add('selected');
+                    
+                    // 选中动画
+                    anime({
+                        targets: side,
+                        scale: [1, 1.05, 1],
+                        duration: 300,
+                        easing: 'easeOutQuart'
+                    });
+                    
+                    const sideName = side.dataset.side;
+                    showNotification(`你已选择${sideName === 'support' ? '支持' : '反对'}方`, 'info');
+                });
+            });
+        }
+        
+        function joinDebate() {
+            showModal('debate-join', {
+                title: '参与辩论',
+                content: `
+                    <div class="debate-join-form">
+                        <div class="form-group">
+                            <label>选择你的立场：</label>
+                            <div class="debate-options">
+                                <label class="radio-option">
+                                    <input type="radio" name="stance" value="support">
+                                    <span>支持方</span>
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="stance" value="oppose">
+                                    <span>反对方</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>你的观点：</label>
+                            <textarea class="form-textarea" placeholder="请详细阐述你的观点..." maxlength="500"></textarea>
+                        </div>
+                        <div class="form-actions">
+                            <button class="btn btn-primary" onclick="submitDebate()">提交观点</button>
+                        </div>
+                    </div>
+                `
+            });
+        }
+        
+        function submitDebate() {
+            const modal = document.querySelector('.modal-overlay');
+            if (modal) {
+                const stance = modal.querySelector('input[name="stance"]:checked');
+                const content = modal.querySelector('textarea').value;
+                
+                if (!stance) {
+                    showNotification('请选择你的立场', 'error');
+                    return;
+                }
+                
+                if (!content || content.trim().length < 20) {
+                    showNotification('观点内容至少需要20个字符', 'error');
+                    return;
+                }
+                
+                showNotification('观点提交成功！', 'success');
+                closeModal(modal);
+            }
+        }
+        
+        function viewDebateDetails() {
+            showNotification('正在加载辩论详情...', 'info');
+        }
+        
+        function initRankingList() {
+            const rankingItems = document.querySelectorAll('.ranking-item');
+            rankingItems.forEach((item, index) => {
+                // 添加排名样式
+                const rank = item.querySelector('.ranking-rank');
+                if (rank) {
+                    rank.style.background = index < 3 ? ['#FFD700', '#C0C0C0', '#CD7F32'][index] : '#D5DBDB';
+                    rank.style.color = 'white';
+                    rank.style.borderRadius = '50%';
+                    rank.style.width = '30px';
+                    rank.style.height = '30px';
+                    rank.style.display = 'flex';
+                    rank.style.alignItems = 'center';
+                    rank.style.justifyContent = 'center';
+                    rank.style.fontWeight = 'bold';
+                    rank.style.fontSize = '14px';
+                }
+                
+                // 添加悬停效果
+                item.addEventListener('mouseenter', () => {
+                    item.style.background = 'rgba(0, 0, 0, 0.02)';
+                    item.style.transform = 'translateX(4px)';
+                });
+                
+                item.addEventListener('mouseleave', () => {
+                    item.style.background = 'transparent';
+                    item.style.transform = 'translateX(0)';
+                });
+            });
+            
+            // 推荐话题卡片
+            const topicCards = document.querySelectorAll('.topic-card-small');
+            topicCards.forEach(card => {
+                const matchRate = card.querySelector('.match-rate');
+                if (matchRate) {
+                    matchRate.style.background = '#4A90A4';
+                    matchRate.style.color = 'white';
+                    matchRate.style.padding = '2px 8px';
+                    matchRate.style.borderRadius = '12px';
+                    matchRate.style.fontSize = '12px';
+                    matchRate.style.fontWeight = '600';
+                }
+                
+                card.addEventListener('click', () => {
+                    showNotification('正在打开推荐话题...', 'info');
+                });
+            });
+        }
+        
+        function createTopic() {
+            showModal('create-topic', {
+                title: '发起新话题',
+                content: `
+                    <div class="create-topic-form">
+                        <div class="form-group">
+                            <label>话题标题</label>
+                            <input type="text" class="form-input" placeholder="请输入话题标题..." maxlength="50">
+                        </div>
+                        <div class="form-group">
+                            <label>话题描述</label>
+                            <textarea class="form-textarea" placeholder="请详细描述你的话题..." maxlength="500"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>选择分类</label>
+                            <select class="form-select">
+                                <option value="">请选择分类</option>
+                                <option value="study">学习相关</option>
+                                <option value="relationship">人际关系</option>
+                                <option value="emotion">情感困惑</option>
+                                <option value="career">就业实习</option>
+                            </select>
+                        </div>
+                        <div class="form-actions">
+                            <button class="btn btn-primary" onclick="submitTopic()">发布话题</button>
+                        </div>
+                    </div>
+                `
+            });
+        }
+        
+        function submitTopic() {
+            const modal = document.querySelector('.modal-overlay');
+            if (modal) {
+                const title = modal.querySelector('input[type="text"]').value;
+                const description = modal.querySelector('textarea').value;
+                const category = modal.querySelector('select').value;
+                
+                if (!title || title.trim().length < 5) {
+                    showNotification('话题标题至少需要5个字符', 'error');
+                    return;
+                }
+                
+                if (!description || description.trim().length < 20) {
+                    showNotification('话题描述至少需要20个字符', 'error');
+                    return;
+                }
+                
+                if (!category) {
+                    showNotification('请选择话题分类', 'error');
+                    return;
+                }
+                
+                showNotification('话题发布成功！', 'success');
+                closeModal(modal);
+            }
+        }
+        
+        function viewGuidelines() {
+            showModal('topic-guidelines', {
+                title: '话题规范',
+                content: `
+                    <div class="guidelines-content">
+                        <h4>话题发布规范</h4>
+                        <ul>
+                            <li>话题标题要简明扼要，能够准确表达讨论内容</li>
+                            <li>话题描述要详细清晰，让其他用户能够充分理解</li>
+                            <li>选择正确的分类，便于其他用户发现和参与</li>
+                            <li>避免发布重复话题，先搜索是否已有类似讨论</li>
+                            <li>保持友善的讨论氛围，尊重不同观点</li>
+                        </ul>
+                        <h4>禁止内容</h4>
+                        <ul>
+                            <li>涉及政治、色情、暴力等敏感话题</li>
+                            <li>人身攻击、恶意诽谤他人</li>
+                            <li>发布广告、营销内容</li>
+                            <li>侵犯他人隐私的内容</li>
+                        </ul>
+                    </div>
+                `
+            });
+        }
+        
+        function showModal(type, data) {
+            const modal = document.createElement('div');
+            modal.className = 'modal-overlay';
+            modal.innerHTML = `
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3>${data.title}</h3>
+                        <button class="modal-close">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        ${data.content}
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+            
+            anime({
+                targets: modal,
+                opacity: [0, 1],
+                duration: 300,
+                easing: 'easeOutQuart'
+            });
+            
+            anime({
+                targets: modal.querySelector('.modal-content'),
+                scale: [0.8, 1],
+                opacity: [0, 1],
+                duration: 300,
+                easing: 'easeOutQuart'
+            });
+            
+            modal.querySelector('.modal-close').addEventListener('click', () => {
+                closeModal(modal);
+            });
+            
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    closeModal(modal);
+                }
+            });
+        }
+        
+        function closeModal(modal) {
+            anime({
+                targets: modal,
+                opacity: [1, 0],
+                duration: 300,
+                easing: 'easeInQuart',
+                complete: () => {
+                    modal.remove();
+                }
+            });
+        }
+        
+        function showNotification(message, type = 'info') {
+            if (window.echoValleyApp && window.echoValleyApp.showNotification) {
+                window.echoValleyApp.showNotification(message, type);
+            }
+        }
+    </script>
+    
+    <style>
+        /* 页面特定样式 */
+        .search-filter-bar {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .search-box {
+            display: flex;
+            align-items: center;
+            background: white;
+            border-radius: 25px;
+            padding: 0.5rem 1rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .search-input {
+            border: none;
+            outline: none;
+            flex: 1;
+            padding: 0.5rem;
+            font-size: 16px;
+        }
+        
+        .search-btn {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 0.25rem;
+        }
+        
+        .filter-tabs {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .filter-tab {
+            padding: 0.5rem 1rem;
+            border: 2px solid #D5DBDB;
+            background: transparent;
+            border-radius: 20px;
+            color: #7F8C8D;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+        
+        .filter-tab:hover,
+        .filter-tab.active {
+            border-color: #4A90A4;
+            color: #4A90A4;
+            background: rgba(74, 144, 164, 0.1);
+        }
+        
+        .hot-topics-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .hot-topic-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            border-radius: 8px;
+            background: rgba(74, 144, 164, 0.05);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .hot-topic-item:hover {
+            background: rgba(74, 144, 164, 0.1);
+            transform: translateX(4px);
+        }
+        
+        .topic-rank {
+            background: #4A90A4;
+            color: white;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        
+        .topic-content h4 {
+            font-size: 1rem;
+            color: #2C3E50;
+            margin-bottom: 0.25rem;
+        }
+        
+        .topic-content p {
+            font-size: 0.85rem;
+            color: #7F8C8D;
+        }
+        
+        .certification-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .cert-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            border-radius: 8px;
+            background: rgba(0, 0, 0, 0.02);
+            transition: all 0.3s ease;
+        }
+        
+        .cert-item:hover {
+            background: rgba(0, 0, 0, 0.05);
+            transform: translateX(4px);
+        }
+        
+        .cert-avatar {
+            font-size: 1.5rem;
+        }
+        
+        .cert-info {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .cert-name {
+            font-weight: 600;
+            color: #2C3E50;
+            margin-bottom: 0.25rem;
+        }
+        
+        .cert-badge {
+            font-size: 0.8rem;
+            color: #4A90A4;
+            background: rgba(74, 144, 164, 0.1);
+            padding: 0.25rem 0.5rem;
+            border-radius: 12px;
+        }
+        
+        .topic-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(44, 62, 80, 0.05);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .topic-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+        
+        .topic-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+        
+        .topic-meta {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .topic-stats {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .last-activity {
+            font-size: 0.85rem;
+            color: #7F8C8D;
+        }
+        
+        .participants,
+        .same-confusion {
+            font-size: 0.85rem;
+            color: #4A90A4;
+            font-weight: 500;
+        }
+        
+        .topic-content {
+            margin-bottom: 1rem;
+        }
+        
+        .topic-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #2C3E50;
+            margin-bottom: 0.5rem;
+        }
+        
+        .topic-description {
+            color: #7F8C8D;
+            line-height: 1.6;
+        }
+        
+        .topic-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 1px solid #D5DBDB;
+            padding-top: 1rem;
+        }
+        
+        .topic-author {
+            font-size: 0.9rem;
+            color: #7F8C8D;
+        }
+        
+        .topic-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .replies-count {
+            font-size: 0.9rem;
+            color: #7F8C8D;
+        }
+        
+        .btn-sm {
+            padding: 0.5rem 1rem;
+            font-size: 0.85rem;
+            min-height: 32px;
+        }
+        
+        .debate-section {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .debate-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .debate-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #2C3E50;
+            margin-bottom: 0.5rem;
+        }
+        
+        .debate-description {
+            color: #7F8C8D;
+        }
+        
+        .debate-stats {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .debate-side {
+            flex: 1;
+            text-align: center;
+            padding: 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .debate-support {
+            background: rgba(39, 174, 96, 0.1);
+            border: 2px solid rgba(39, 174, 96, 0.3);
+        }
+        
+        .debate-oppose {
+            background: rgba(231, 76, 60, 0.1);
+            border: 2px solid rgba(231, 76, 60, 0.3);
+        }
+        
+        .debate-side:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+        
+        .debate-side.selected {
+            border-color: #4A90A4;
+            background: rgba(74, 144, 164, 0.2);
+        }
+        
+        .side-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .side-title {
+            font-weight: 600;
+            color: #2C3E50;
+            margin-bottom: 0.5rem;
+        }
+        
+        .side-count {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #4A90A4;
+            margin-bottom: 0.25rem;
+        }
+        
+        .side-percentage {
+            font-size: 0.9rem;
+            color: #7F8C8D;
+        }
+        
+        .debate-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+        
+        .echo-ranking {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .ranking-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .ranking-rank {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 14px;
+            color: white;
+        }
+        
+        .ranking-avatar {
+            font-size: 1.5rem;
+        }
+        
+        .ranking-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .ranking-name {
+            font-weight: 600;
+            color: #2C3E50;
+            margin-bottom: 0.25rem;
+        }
+        
+        .ranking-echo {
+            font-size: 0.85rem;
+            color: #7F8C8D;
+        }
+        
+        .recommended-topics {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .topic-card-small {
+            padding: 1rem;
+            border-radius: 8px;
+            background: rgba(74, 144, 164, 0.05);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .topic-card-small:hover {
+            background: rgba(74, 144, 164, 0.1);
+            transform: translateX(4px);
+        }
+        
+        .topic-card-small h4 {
+            font-size: 1rem;
+            color: #2C3E50;
+            margin-bottom: 0.25rem;
+        }
+        
+        .topic-card-small p {
+            font-size: 0.85rem;
+            color: #7F8C8D;
+            margin-bottom: 0.5rem;
+        }
+        
+        .match-rate {
+            background: #4A90A4;
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, rgba(74, 144, 164, 0.1), rgba(232, 165, 152, 0.1));
+            border-radius: 16px;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+        
+        .cta-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #2C3E50;
+            margin-bottom: 1rem;
+        }
+        
+        .cta-description {
+            font-size: 1.1rem;
+            color: #7F8C8D;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+        
+        .cta-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        @media (max-width: 768px) {
+            .search-filter-bar {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .filter-tabs {
+                justify-content: center;
+            }
+            
+            .debate-stats {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .cta-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</body>
+</html>

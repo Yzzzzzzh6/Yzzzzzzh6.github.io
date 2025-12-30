@@ -1,0 +1,1627 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>心灵驿站 - 回声谷</title>
+    <meta name="description" content="专业心理支持资源，解忧盲盒、导师答疑，轻量级心理服务。">
+    
+    <!-- 字体引入 -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- 核心库引入 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js"></script>
+    
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-brand">
+                <img src="resources/logo.png" alt="回声谷" onerror="this.style.display='none'">
+                <span>回声谷</span>
+            </a>
+            
+            <button class="mobile-menu-toggle" aria-label="菜单">
+                <span>☰</span>
+            </button>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">首页</a></li>
+                <li><a href="voices.html" class="nav-link">心声树洞</a></li>
+                <li><a href="square.html" class="nav-link">共鸣广场</a></li>
+                <li><a href="station.html" class="nav-link active">心灵驿站</a></li>
+                <li><a href="profile.html" class="nav-link">个人中心</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 主内容区域 -->
+    <main class="main-content">
+        <!-- 页面标题区域 -->
+        <section class="page-header">
+            <div class="container">
+                <div class="page-title-content fade-in">
+                    <h1 class="page-title">心灵驿站</h1>
+                    <p class="page-subtitle">
+                        专业的心理支持资源，温暖的心灵陪伴<br>
+                        在这里找到内心的平静和力量
+                    </p>
+                    <div class="page-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">50+</span>
+                            <span class="stat-label">专业导师</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">200+</span>
+                            <span class="stat-label">心理资源</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">24/7</span>
+                            <span class="stat-label">紧急求助</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 解忧盲盒 -->
+        <section class="content-section">
+            <div class="container">
+                <div class="mystery-box-section fade-in">
+                    <div class="mystery-box" id="mystery-box">
+                        <div class="mystery-box-icon">🎁</div>
+                        <h2 class="mystery-box-title">解忧盲盒</h2>
+                        <p class="mystery-box-description">
+                            点击开启盲盒，获得随机的心理支持资源<br>
+                            每一次开启都是一次心灵的治愈之旅
+                        </p>
+                        <div class="mystery-box-stats">
+                            <span>已开启: 12,345次</span>
+                            <span>好评率: 98%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 导师灯塔 -->
+        <section class="content-section">
+            <div class="container">
+                <div class="section-header scroll-reveal">
+                    <h2 class="section-title">🗼 导师灯塔</h2>
+                    <p class="section-subtitle">
+                        认证心理咨询师和优秀学长学姐在线答疑
+                    </p>
+                </div>
+                
+                <div class="mentor-grid">
+                    <div class="mentor-card card scroll-reveal">
+                        <div class="mentor-avatar">
+                            <div class="avatar-placeholder">👨‍⚕️</div>
+                            <div class="online-status online"></div>
+                        </div>
+                        <div class="mentor-info">
+                            <h3 class="mentor-name">心理咨询师小王</h3>
+                            <p class="mentor-title">国家二级心理咨询师</p>
+                            <p class="mentor-description">专注于大学生心理健康，5年咨询经验</p>
+                            <div class="mentor-stats">
+                                <span>已帮助 1,234人</span>
+                                <span>好评率 98%</span>
+                            </div>
+                            <div class="mentor-tags">
+                                <span class="tag">焦虑抑郁</span>
+                                <span class="tag">人际关系</span>
+                                <span class="tag">学业压力</span>
+                            </div>
+                            <div class="mentor-actions">
+                                <button class="btn btn-primary" onclick="consultMentor('小王')">
+                                    立即咨询
+                                </button>
+                                <button class="btn btn-outline" onclick="viewMentorProfile('小王')">
+                                    查看详情
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mentor-card card scroll-reveal">
+                        <div class="mentor-avatar">
+                            <div class="avatar-placeholder">👩‍🎓</div>
+                            <div class="online-status online"></div>
+                        </div>
+                        <div class="mentor-info">
+                            <h3 class="mentor-name">学姐阿芳</h3>
+                            <p class="mentor-title">清华大学研究生</p>
+                            <p class="mentor-description">保研经验分享，学习方法指导</p>
+                            <div class="mentor-stats">
+                                <span>已帮助 856人</span>
+                                <span>好评率 96%</span>
+                            </div>
+                            <div class="mentor-tags">
+                                <span class="tag">保研经验</span>
+                                <span class="tag">学习方法</span>
+                                <span class="tag">时间管理</span>
+                            </div>
+                            <div class="mentor-actions">
+                                <button class="btn btn-primary" onclick="consultMentor('阿芳')">
+                                    立即咨询
+                                </button>
+                                <button class="btn btn-outline" onclick="viewMentorProfile('阿芳')">
+                                    查看详情
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mentor-card card scroll-reveal">
+                        <div class="mentor-avatar">
+                            <div class="avatar-placeholder">👨‍💼</div>
+                            <div class="online-status offline"></div>
+                        </div>
+                        <div class="mentor-info">
+                            <h3 class="mentor-name">学长阿明</h3>
+                            <p class="mentor-title">某大厂产品经理</p>
+                            <p class="mentor-description">求职面试技巧，职场经验分享</p>
+                            <div class="mentor-stats">
+                                <span>已帮助 567人</span>
+                                <span>好评率 94%</span>
+                            </div>
+                            <div class="mentor-tags">
+                                <span class="tag">求职面试</span>
+                                <span class="tag">职场经验</span>
+                                <span class="tag">职业规划</span>
+                            </div>
+                            <div class="mentor-actions">
+                                <button class="btn btn-secondary" onclick="scheduleConsult('阿明')">
+                                    预约咨询
+                                </button>
+                                <button class="btn btn-outline" onclick="viewMentorProfile('阿明')">
+                                    查看详情
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mentor-card card scroll-reveal">
+                        <div class="mentor-avatar">
+                            <div class="avatar-placeholder">👩‍⚕️</div>
+                            <div class="online-status online"></div>
+                        </div>
+                        <div class="mentor-info">
+                            <h3 class="mentor-name">心理委员小雨</h3>
+                            <p class="mentor-title">心理学专业大四学生</p>
+                            <p class="mentor-description">同龄人视角，共情理解</p>
+                            <div class="mentor-stats">
+                                <span>已帮助 432人</span>
+                                <span>好评率 92%</span>
+                            </div>
+                            <div class="mentor-tags">
+                                <span class="tag">情感困惑</span>
+                                <span class="tag">人际关系</span>
+                                <span class="tag">学业压力</span>
+                            </div>
+                            <div class="mentor-actions">
+                                <button class="btn btn-primary" onclick="consultMentor('小雨')">
+                                    立即咨询
+                                </button>
+                                <button class="btn btn-outline" onclick="viewMentorProfile('小雨')">
+                                    查看详情
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 心理资源库 -->
+        <section class="content-section">
+            <div class="container">
+                <div class="section-header scroll-reveal">
+                    <h2 class="section-title">📚 心理资源库</h2>
+                    <p class="section-subtitle">
+                        丰富的心理健康资源，帮助你更好地了解自己
+                    </p>
+                </div>
+                
+                <div class="resource-tabs scroll-reveal">
+                    <button class="resource-tab active" data-category="hotline">援助热线</button>
+                    <button class="resource-tab" data-category="exercise">放松练习</button>
+                    <button class="resource-tab" data-category="article">科普文章</button>
+                    <button class="resource-tab" data-category="test">心理测试</button>
+                    <button class="resource-tab" data-category="music">治愈音乐</button>
+                </div>
+                
+                <div id="resource-content" class="scroll-reveal">
+                    <!-- 动态加载资源内容 -->
+                </div>
+            </div>
+        </section>
+
+        <!-- 紧急求助 -->
+        <section class="content-section">
+            <div class="container">
+                <div class="emergency-section scroll-reveal">
+                    <div class="emergency-content">
+                        <h2 class="emergency-title">🚨 紧急求助</h2>
+                        <p class="emergency-description">
+                            如果你正面临严重的心理危机，请立即寻求专业帮助<br>
+                            你的生命很珍贵，我们都关心你
+                        </p>
+                        <div class="emergency-contacts">
+                            <div class="contact-item">
+                                <div class="contact-icon">📞</div>
+                                <div class="contact-info">
+                                    <h4>24小时心理援助热线</h4>
+                                    <p>400-123-4567</p>
+                                    <span>专业心理咨询师24小时在线</span>
+                                </div>
+                                <button class="btn btn-primary" onclick="callHotline()">
+                                    立即拨打
+                                </button>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon">🏥</div>
+                                <div class="contact-info">
+                                    <h4>校园心理咨询中心</h4>
+                                    <p>010-12345678</p>
+                                    <span>预约制，保护隐私</span>
+                                </div>
+                                <button class="btn btn-primary" onclick="bookConsultation()">
+                                    立即预约
+                                </button>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon">💬</div>
+                                <div class="contact-info">
+                                    <h4>在线紧急求助</h4>
+                                    <p>点击开始对话</p>
+                                    <span>5分钟内专业回复</span>
+                                </div>
+                                <button class="btn btn-primary" onclick="startEmergencyChat()">
+                                    开始对话
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 情绪调节工具 -->
+        <section class="content-section">
+            <div class="container">
+                <div class="section-header scroll-reveal">
+                    <h2 class="section-title">🧘 情绪调节工具</h2>
+                    <p class="section-subtitle">
+                        实用的情绪调节工具，帮助你保持心理健康
+                    </p>
+                </div>
+                
+                <div class="tools-grid">
+                    <div class="tool-card card scroll-reveal">
+                        <div class="tool-icon">🫁</div>
+                        <h3>呼吸练习</h3>
+                        <p>简单的呼吸练习，帮助缓解焦虑和压力</p>
+                        <div class="tool-stats">
+                            <span>使用次数: 1,234</span>
+                            <span>有效缓解: 85%</span>
+                        </div>
+                        <button class="btn btn-primary" onclick="startBreathingExercise()">
+                            开始练习
+                        </button>
+                    </div>
+                    
+                    <div class="tool-card card scroll-reveal">
+                        <div class="tool-icon">🎵</div>
+                        <h3>冥想音乐</h3>
+                        <p>精选的冥想音乐，帮助你放松身心</p>
+                        <div class="tool-stats">
+                            <span>播放次数: 2,567</span>
+                            <span>好评率: 92%</span>
+                        </div>
+                        <button class="btn btn-primary" onclick="playMeditationMusic()">
+                            开始播放
+                        </button>
+                    </div>
+                    
+                    <div class="tool-card card scroll-reveal">
+                        <div class="tool-icon">📝</div>
+                        <h3>情绪日记</h3>
+                        <p>记录每日情绪变化，了解自己的情绪模式</p>
+                        <div class="tool-stats">
+                            <span>使用人数: 856</span>
+                            <span>坚持率: 78%</span>
+                        </div>
+                        <button class="btn btn-primary" onclick="startEmotionJournal()">
+                            开始记录
+                        </button>
+                    </div>
+                    
+                    <div class="tool-card card scroll-reveal">
+                        <div class="tool-icon">🎯</div>
+                        <h3>正念练习</h3>
+                        <p>专业的正念练习，提升专注力和觉察力</p>
+                        <div class="tool-stats">
+                            <span>练习次数: 987</span>
+                            <span>完成率: 89%</span>
+                        </div>
+                        <button class="btn btn-primary" onclick="startMindfulness()">
+                            开始练习
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 心理健康知识 -->
+        <section class="content-section">
+            <div class="container">
+                <div class="section-header scroll-reveal">
+                    <h2 class="section-title">🎓 心理健康知识</h2>
+                    <p class="section-subtitle">
+                        学习心理健康知识，更好地照顾自己和他人
+                    </p>
+                </div>
+                
+                <div class="knowledge-grid">
+                    <div class="knowledge-card card scroll-reveal">
+                        <div class="knowledge-icon">🧠</div>
+                        <h3>认识抑郁症</h3>
+                        <p>了解抑郁症的症状、成因和应对方法</p>
+                        <div class="knowledge-meta">
+                            <span>阅读量: 2,341</span>
+                            <span>收藏: 156</span>
+                        </div>
+                        <button class="btn btn-outline" onclick="readArticle('depression')">
+                            阅读文章
+                        </button>
+                    </div>
+                    
+                    <div class="knowledge-card card scroll-reveal">
+                        <div class="knowledge-icon">😰</div>
+                        <h3>应对焦虑情绪</h3>
+                        <p>学会识别和管理焦虑情绪的有效方法</p>
+                        <div class="knowledge-meta">
+                            <span>阅读量: 1,876</span>
+                            <span>收藏: 203</span>
+                        </div>
+                        <button class="btn btn-outline" onclick="readArticle('anxiety')">
+                            阅读文章
+                        </button>
+                    </div>
+                    
+                    <div class="knowledge-card card scroll-reveal">
+                        <div class="knowledge-icon">🤝</div>
+                        <h3>建立健康人际关系</h3>
+                        <p>学习有效沟通，建立良好的人际关系</p>
+                        <div class="knowledge-meta">
+                            <span>阅读量: 2,156</span>
+                            <span>收藏: 189</span>
+                        </div>
+                        <button class="btn btn-outline" onclick="readArticle('relationship')">
+                            阅读文章
+                        </button>
+                    </div>
+                    
+                    <div class="knowledge-card card scroll-reveal">
+                        <div class="knowledge-icon">💪</div>
+                        <h3>培养心理韧性</h3>
+                        <p>提升应对挫折和压力的心理能力</p>
+                        <div class="knowledge-meta">
+                            <span>阅读量: 1,543</span>
+                            <span>收藏: 167</span>
+                        </div>
+                        <button class="btn btn-outline" onclick="readArticle('resilience')">
+                            阅读文章
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">回声谷</div>
+                <p class="footer-description">
+                    用科技传递温暖，让共鸣消解孤独<br>
+                    你的声音，必有回响
+                </p>
+                <div class="footer-links">
+                    <a href="#" class="footer-link">关于我们</a>
+                    <a href="#" class="footer-link">使用条款</a>
+                    <a href="#" class="footer-link">隐私政策</a>
+                    <a href="#" class="footer-link">联系我们</a>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2025 回声谷. 用心守护每一份真诚.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 主要JavaScript -->
+    <script src="main.js"></script>
+    
+    <script>
+        // 页面特定的初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            initStationPage();
+        });
+        
+        function initStationPage() {
+            // 初始化解忧盲盒
+            initMysteryBox();
+            
+            // 初始化资源标签
+            initResourceTabs();
+            
+            // 初始化导师状态
+            initMentorStatus();
+            
+            // 加载默认资源
+            loadResourceContent('hotline');
+        }
+        
+        function initMysteryBox() {
+            const mysteryBox = document.getElementById('mystery-box');
+            if (mysteryBox) {
+                mysteryBox.addEventListener('click', openMysteryBox);
+            }
+        }
+        
+        function openMysteryBox() {
+            const resources = [
+                {
+                    type: 'breathing',
+                    title: '呼吸练习',
+                    content: '试试这个简单的呼吸练习：吸气4秒，屏息4秒，呼气6秒。重复5次，感受身心的放松。',
+                    icon: '🫁',
+                    action: '开始练习'
+                },
+                {
+                    type: 'music',
+                    title: '治愈音乐',
+                    content: '推荐你听这首《森林狂想曲》，让自然的旋律带走你的烦恼。',
+                    icon: '🎵',
+                    action: '开始播放'
+                },
+                {
+                    type: 'quote',
+                    title: '温暖语录',
+                    content: '"每一个不曾起舞的日子，都是对生命的辜负。" - 尼采',
+                    icon: '💭',
+                    action: '收藏语录'
+                },
+                {
+                    type: 'exercise',
+                    title: '放松练习',
+                    content: '闭上眼睛，想象自己在一个安全温暖的地方，感受那份宁静。',
+                    icon: '🧘',
+                    action: '开始练习'
+                },
+                {
+                    type: 'test',
+                    title: '情绪测试',
+                    content: '做个简单的情绪测试，了解你当前的情绪状态。',
+                    icon: '📝',
+                    action: '开始测试'
+                },
+                {
+                    type: 'article',
+                    title: '科普文章',
+                    content: '推荐阅读《如何应对焦虑情绪》，学习有效的焦虑管理方法。',
+                    icon: '📖',
+                    action: '阅读文章'
+                }
+            ];
+            
+            const resource = resources[Math.floor(Math.random() * resources.length)];
+            
+            // 盲盒动画
+            anime({
+                targets: '#mystery-box',
+                rotateY: [0, 360],
+                scale: [1, 1.1, 1],
+                duration: 800,
+                easing: 'easeOutQuart'
+            });
+            
+            setTimeout(() => {
+                showResourceModal(resource);
+            }, 400);
+        }
+        
+        function showResourceModal(resource) {
+            const modal = document.createElement('div');
+            modal.className = 'modal-overlay';
+            modal.innerHTML = `
+                <div class="modal-content resource-modal">
+                    <div class="modal-header">
+                        <h3>${resource.icon} ${resource.title}</h3>
+                        <button class="modal-close">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="resource-content">
+                            <p>${resource.content}</p>
+                        </div>
+                        <div class="resource-actions">
+                            <button class="btn btn-primary" onclick="useResource('${resource.type}')">
+                                ${resource.action}
+                            </button>
+                            <button class="btn btn-outline" onclick="collectResource('${resource.type}')">
+                                收藏资源
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+            
+            anime({
+                targets: modal,
+                opacity: [0, 1],
+                duration: 300,
+                easing: 'easeOutQuart'
+            });
+            
+            anime({
+                targets: modal.querySelector('.modal-content'),
+                scale: [0.8, 1],
+                opacity: [0, 1],
+                duration: 300,
+                easing: 'easeOutQuart'
+            });
+            
+            modal.querySelector('.modal-close').addEventListener('click', () => {
+                closeModal(modal);
+            });
+            
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    closeModal(modal);
+                }
+            });
+        }
+        
+        function useResource(type) {
+            const actions = {
+                'breathing': () => startBreathingExercise(),
+                'music': () => playMeditationMusic(),
+                'test': () => startEmotionTest(),
+                'exercise': () => startRelaxationExercise(),
+                'article': () => readArticle('general'),
+                'quote': () => collectQuote()
+            };
+            
+            if (actions[type]) {
+                actions[type]();
+            }
+            
+            // 关闭模态框
+            const modal = document.querySelector('.modal-overlay');
+            if (modal) {
+                closeModal(modal);
+            }
+        }
+        
+        function collectResource(type) {
+            showNotification('资源已收藏！', 'success');
+            
+            // 关闭模态框
+            const modal = document.querySelector('.modal-overlay');
+            if (modal) {
+                closeModal(modal);
+            }
+        }
+        
+        function initResourceTabs() {
+            const tabs = document.querySelectorAll('.resource-tab');
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    // 移除所有active状态
+                    tabs.forEach(t => t.classList.remove('active'));
+                    // 添加当前active状态
+                    tab.classList.add('active');
+                    
+                    const category = tab.dataset.category;
+                    loadResourceContent(category);
+                    
+                    // 标签动画
+                    anime({
+                        targets: tab,
+                        scale: [1, 0.95, 1],
+                        duration: 200,
+                        easing: 'easeOutQuart'
+                    });
+                });
+            });
+        }
+        
+        function loadResourceContent(category) {
+            const contentContainer = document.getElementById('resource-content');
+            if (!contentContainer) return;
+            
+            const resources = {
+                'hotline': [
+                    { name: '全国心理援助热线', phone: '400-123-4567', description: '24小时专业心理咨询服务' },
+                    { name: '北京心理危机干预中心', phone: '010-8295-1332', description: '专业心理危机干预' },
+                    { name: '上海心理热线', phone: '021-12320-5', description: '心理健康咨询服务' },
+                    { name: '广州心理危机干预热线', phone: '020-8189-1110', description: '24小时心理支持' }
+                ],
+                'exercise': [
+                    { name: '深呼吸练习', duration: '5分钟', description: '缓解焦虑的简单呼吸练习' },
+                    { name: '渐进式肌肉放松', duration: '15分钟', description: '从头到脚的肌肉放松练习' },
+                    { name: '正念冥想', duration: '10分钟', description: '提升专注力的正念练习' },
+                    { name: '身体扫描', duration: '20分钟', description: '觉察身体感受的冥想练习' }
+                ],
+                'article': [
+                    { title: '认识抑郁症：症状与应对', readTime: '5分钟', author: '心理咨询师小王' },
+                    { title: '如何应对考试焦虑', readTime: '3分钟', author: '学长阿明' },
+                    { title: '建立健康的人际关系', readTime: '7分钟', author: '心理委员小雨' },
+                    { title: '大学生常见心理问题及应对', readTime: '10分钟', author: '心理咨询师小王' }
+                ],
+                'test': [
+                    { name: '抑郁自评量表(SDS)', questions: '20题', duration: '5分钟', description: '评估抑郁情绪水平' },
+                    { name: '焦虑自评量表(SAS)', questions: '20题', duration: '5分钟', description: '评估焦虑情绪水平' },
+                    { name: '人际关系量表', questions: '25题', duration: '8分钟', description: '评估人际交往能力' },
+                    { name: '学习压力测试', questions: '15题', duration: '3分钟', description: '评估学习压力水平' }
+                ],
+                'music': [
+                    { name: '森林狂想曲', artist: '班得瑞', duration: '4:32', description: '自然音乐的治愈力量' },
+                    { name: '雨的印记', artist: '李闰珉', duration: '3:42', description: '钢琴曲的温柔抚慰' },
+                    { name: '月光奏鸣曲', artist: '贝多芬', duration: '15:28', description: '古典音乐的宁静之美' },
+                    { name: '禅意音乐', artist: ' Various Artists', duration: '30:00', description: '冥想放松的专用音乐' }
+                ]
+            };
+            
+            const items = resources[category] || [];
+            
+            let html = '';
+            if (category === 'hotline') {
+                html = items.map(item => `
+                    <div class="resource-item">
+                        <div class="resource-info">
+                            <h4>${item.name}</h4>
+                            <p>${item.description}</p>
+                            <span class="phone-number">${item.phone}</span>
+                        </div>
+                        <button class="btn btn-primary" onclick="callHotline('${item.phone}')">
+                            拨打热线
+                        </button>
+                    </div>
+                `).join('');
+            } else if (category === 'exercise') {
+                html = items.map(item => `
+                    <div class="resource-item">
+                        <div class="resource-info">
+                            <h4>${item.name}</h4>
+                            <p>${item.description}</p>
+                            <span class="duration">时长: ${item.duration}</span>
+                        </div>
+                        <button class="btn btn-primary" onclick="startExercise('${item.name}')">
+                            开始练习
+                        </button>
+                    </div>
+                `).join('');
+            } else if (category === 'article') {
+                html = items.map(item => `
+                    <div class="resource-item">
+                        <div class="resource-info">
+                            <h4>${item.title}</h4>
+                            <p>作者: ${item.author}</p>
+                            <span class="read-time">阅读时间: ${item.readTime}</span>
+                        </div>
+                        <button class="btn btn-primary" onclick="readArticle('${item.title}')">
+                            阅读文章
+                        </button>
+                    </div>
+                `).join('');
+            } else if (category === 'test') {
+                html = items.map(item => `
+                    <div class="resource-item">
+                        <div class="resource-info">
+                            <h4>${item.name}</h4>
+                            <p>${item.description}</p>
+                            <span class="test-info">${item.questions} · ${item.duration}</span>
+                        </div>
+                        <button class="btn btn-primary" onclick="startTest('${item.name}')">
+                            开始测试
+                        </button>
+                    </div>
+                `).join('');
+            } else if (category === 'music') {
+                html = items.map(item => `
+                    <div class="resource-item">
+                        <div class="resource-info">
+                            <h4>${item.name}</h4>
+                            <p>${item.description}</p>
+                            <span class="music-info">${item.artist} · ${item.duration}</span>
+                        </div>
+                        <button class="btn btn-primary" onclick="playMusic('${item.name}')">
+                            播放音乐
+                        </button>
+                    </div>
+                `).join('');
+            }
+            
+            contentContainer.innerHTML = `
+                <div class="resource-list">
+                    ${html}
+                </div>
+            `;
+            
+            // 添加动画
+            anime({
+                targets: contentContainer,
+                opacity: [0, 1],
+                translateY: [20, 0],
+                duration: 500,
+                easing: 'easeOutQuart'
+            });
+        }
+        
+        function initMentorStatus() {
+            const onlineStatuses = document.querySelectorAll('.online-status');
+            onlineStatuses.forEach(status => {
+                if (status.classList.contains('online')) {
+                    status.style.background = '#27AE60';
+                    status.style.boxShadow = '0 0 10px rgba(39, 174, 96, 0.5)';
+                } else {
+                    status.style.background = '#BDC3C7';
+                }
+            });
+        }
+        
+        // 功能函数
+        function consultMentor(mentorName) {
+            showNotification(`正在连接${mentorName}...`, 'info');
+            
+            setTimeout(() => {
+                showModal('consultation', {
+                    title: `咨询 ${mentorName}`,
+                    content: `
+                        <div class="consultation-form">
+                            <div class="form-group">
+                                <label>咨询类型</label>
+                                <select class="form-select">
+                                    <option value="">请选择咨询类型</option>
+                                    <option value="emotion">情绪困扰</option>
+                                    <option value="study">学业压力</option>
+                                    <option value="relationship">人际关系</option>
+                                    <option value="career">职业规划</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>问题描述</label>
+                                <textarea class="form-textarea" placeholder="请详细描述你的问题..." maxlength="500"></textarea>
+                            </div>
+                            <div class="form-actions">
+                                <button class="btn btn-primary" onclick="submitConsultation('${mentorName}')">提交咨询</button>
+                            </div>
+                        </div>
+                    `
+                });
+            }, 1000);
+        }
+        
+        function submitConsultation(mentorName) {
+            showNotification(`咨询请求已发送给${mentorName}，请等待回复`, 'success');
+            
+            const modal = document.querySelector('.modal-overlay');
+            if (modal) {
+                closeModal(modal);
+            }
+        }
+        
+        function viewMentorProfile(mentorName) {
+            showNotification(`正在查看${mentorName}的详细资料...`, 'info');
+        }
+        
+        function scheduleConsult(mentorName) {
+            showNotification(`${mentorName}当前不在线，已为你安排预约`, 'info');
+        }
+        
+        function callHotline(phone = '400-123-4567') {
+            showNotification(`正在拨打热线 ${phone}...`, 'info');
+            
+            // 在实际应用中，这里可以调用电话功能
+            setTimeout(() => {
+                showModal('hotline-info', {
+                    title: '热线信息',
+                    content: `
+                        <div class="hotline-content">
+                            <h4>正在拨打：${phone}</h4>
+                            <p>请保持通话，专业心理咨询师正在为你接通...</p>
+                            <div class="hotline-tips">
+                                <h5>通话提示：</h5>
+                                <ul>
+                                    <li>请找一个安静的环境</li>
+                                    <li>准备好描述你的情况</li>
+                                    <li>不用担心隐私问题，通话完全保密</li>
+                                    <li>咨询师会耐心倾听并提供专业建议</li>
+                                </ul>
+                            </div>
+                        </div>
+                    `
+                });
+            }, 2000);
+        }
+        
+        function bookConsultation() {
+            showNotification('正在跳转到预约页面...', 'info');
+        }
+        
+        function startEmergencyChat() {
+            showModal('emergency-chat', {
+                title: '紧急求助对话',
+                content: `
+                    <div class="emergency-chat">
+                        <div class="chat-header">
+                            <span>正在为你匹配专业咨询师...</span>
+                        </div>
+                        <div class="chat-messages">
+                            <div class="message system">
+                                <p>系统：已为你匹配到专业咨询师，请描述你的情况。</p>
+                            </div>
+                        </div>
+                        <div class="chat-input">
+                            <textarea placeholder="请描述你的情况或困扰..."></textarea>
+                            <button class="btn btn-primary" onclick="sendEmergencyMessage()">发送</button>
+                        </div>
+                    </div>
+                `
+            });
+        }
+        
+        function sendEmergencyMessage() {
+            const modal = document.querySelector('.modal-overlay');
+            const textarea = modal.querySelector('textarea');
+            const message = textarea.value.trim();
+            
+            if (!message) {
+                showNotification('请输入你的消息', 'error');
+                return;
+            }
+            
+            showNotification('消息已发送，咨询师正在回复...', 'info');
+            textarea.value = '';
+            
+            // 模拟回复
+            setTimeout(() => {
+                const messagesContainer = modal.querySelector('.chat-messages');
+                const reply = document.createElement('div');
+                reply.className = 'message counselor';
+                reply.innerHTML = '<p>咨询师：感谢你的信任，我在这里陪伴你。请先深呼吸，让我们一起面对这个问题。</p>';
+                messagesContainer.appendChild(reply);
+            }, 3000);
+        }
+        
+        function startBreathingExercise() {
+            showModal('breathing-exercise', {
+                title: '呼吸练习',
+                content: `
+                    <div class="breathing-container">
+                        <div class="breathing-circle" id="breathing-circle"></div>
+                        <div class="breathing-instruction" id="breathing-instruction">准备开始...</div>
+                        <div class="breathing-controls">
+                            <button class="btn btn-primary" onclick="startBreathing()">开始练习</button>
+                            <button class="btn btn-outline" onclick="stopBreathing()">停止</button>
+                        </div>
+                    </div>
+                `
+            });
+            
+            // 初始化呼吸练习动画
+            initBreathingAnimation();
+        }
+        
+        function initBreathingAnimation() {
+            const circle = document.getElementById('breathing-circle');
+            const instruction = document.getElementById('breathing-instruction');
+            
+            if (!circle || !instruction) return;
+            
+            let isRunning = false;
+            let currentPhase = 0;
+            const phases = [
+                { text: '吸气', scale: 1.5, duration: 4000 },
+                { text: '屏息', scale: 1.5, duration: 4000 },
+                { text: '呼气', scale: 1, duration: 6000 }
+            ];
+            
+            window.startBreathing = function() {
+                if (isRunning) return;
+                isRunning = true;
+                
+                function nextPhase() {
+                    if (!isRunning) return;
+                    
+                    const phase = phases[currentPhase];
+                    instruction.textContent = phase.text;
+                    
+                    anime({
+                        targets: circle,
+                        scale: phase.scale,
+                        duration: phase.duration,
+                        easing: 'easeInOutQuad',
+                        complete: () => {
+                            currentPhase = (currentPhase + 1) % phases.length;
+                            setTimeout(nextPhase, 500);
+                        }
+                    });
+                }
+                
+                nextPhase();
+            };
+            
+            window.stopBreathing = function() {
+                isRunning = false;
+                instruction.textContent = '练习已停止';
+                anime({
+                    targets: circle,
+                    scale: 1,
+                    duration: 1000,
+                    easing: 'easeOutQuart'
+                });
+            };
+        }
+        
+        function playMeditationMusic() {
+            showNotification('正在播放冥想音乐...', 'info');
+        }
+        
+        function startEmotionJournal() {
+            showModal('emotion-journal', {
+                title: '情绪日记',
+                content: `
+                    <div class="emotion-journal">
+                        <div class="form-group">
+                            <label>今天的情绪 (1-10分)</label>
+                            <input type="range" min="1" max="10" value="5" class="emotion-slider" id="emotion-slider">
+                            <div class="emotion-labels">
+                                <span>很差</span>
+                                <span id="emotion-value">5</span>
+                                <span>很好</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>情绪描述</label>
+                            <textarea class="form-textarea" placeholder="描述一下你今天的感受和经历..."></textarea>
+                        </div>
+                        <div class="form-actions">
+                            <button class="btn btn-primary" onclick="saveEmotionEntry()">保存记录</button>
+                        </div>
+                    </div>
+                `
+            });
+            
+            // 初始化情绪滑块
+            const slider = document.getElementById('emotion-slider');
+            const valueDisplay = document.getElementById('emotion-value');
+            
+            if (slider && valueDisplay) {
+                slider.addEventListener('input', (e) => {
+                    valueDisplay.textContent = e.target.value;
+                });
+            }
+        }
+        
+        function saveEmotionEntry() {
+            showNotification('情绪记录已保存！', 'success');
+            
+            const modal = document.querySelector('.modal-overlay');
+            if (modal) {
+                closeModal(modal);
+            }
+        }
+        
+        function startMindfulness() {
+            showModal('mindfulness', {
+                title: '正念练习',
+                content: `
+                    <div class="mindfulness-container">
+                        <div class="mindfulness-instruction">
+                            <h4>正念呼吸练习</h4>
+                            <p>请找一个舒适的姿势坐下，闭上眼睛，将注意力集中在呼吸上...</p>
+                        </div>
+                        <div class="mindfulness-timer">
+                            <div class="timer-display" id="timer-display">05:00</div>
+                            <div class="timer-controls">
+                                <button class="btn btn-primary" onclick="startMindfulnessTimer()">开始练习</button>
+                                <button class="btn btn-outline" onclick="stopMindfulnessTimer()">停止</button>
+                            </div>
+                        </div>
+                    </div>
+                `
+            });
+        }
+        
+        let mindfulnessTimer = null;
+        
+        function startMindfulnessTimer() {
+            let timeLeft = 300; // 5分钟
+            const display = document.getElementById('timer-display');
+            
+            mindfulnessTimer = setInterval(() => {
+                const minutes = Math.floor(timeLeft / 60);
+                const seconds = timeLeft % 60;
+                display.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                
+                if (timeLeft <= 0) {
+                    clearInterval(mindfulnessTimer);
+                    showNotification('正念练习完成！', 'success');
+                }
+                
+                timeLeft--;
+            }, 1000);
+        }
+        
+        function stopMindfulnessTimer() {
+            if (mindfulnessTimer) {
+                clearInterval(mindfulnessTimer);
+                mindfulnessTimer = null;
+            }
+            
+            const display = document.getElementById('timer-display');
+            if (display) {
+                display.textContent = '05:00';
+            }
+            
+            showNotification('练习已停止', 'info');
+        }
+        
+        function readArticle(articleType) {
+            showNotification(`正在加载文章...`, 'info');
+        }
+        
+        function closeModal(modal) {
+            anime({
+                targets: modal,
+                opacity: [1, 0],
+                duration: 300,
+                easing: 'easeInQuart',
+                complete: () => {
+                    modal.remove();
+                }
+            });
+        }
+        
+        function showNotification(message, type = 'info') {
+            if (window.echoValleyApp && window.echoValleyApp.showNotification) {
+                window.echoValleyApp.showNotification(message, type);
+            }
+        }
+    </script>
+    
+    <style>
+        /* 页面特定样式 */
+        .mystery-box-section {
+            text-align: center;
+        }
+        
+        .mystery-box {
+            background: linear-gradient(135deg, #4A90A4, #E8A598);
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .mystery-box:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+        }
+        
+        .mystery-box-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+        
+        .mystery-box-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .mystery-box-description {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+        }
+        
+        .mystery-box-stats {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .mentor-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .mentor-card {
+            display: flex;
+            gap: 1.5rem;
+            padding: 2rem;
+        }
+        
+        .mentor-avatar {
+            position: relative;
+            flex-shrink: 0;
+        }
+        
+        .avatar-placeholder {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #4A90A4, #E8A598);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+        }
+        
+        .online-status {
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 3px solid white;
+        }
+        
+        .online-status.online {
+            background: #27AE60;
+            box-shadow: 0 0 10px rgba(39, 174, 96, 0.5);
+        }
+        
+        .online-status.offline {
+            background: #BDC3C7;
+        }
+        
+        .mentor-info {
+            flex: 1;
+        }
+        
+        .mentor-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #2C3E50;
+            margin-bottom: 0.25rem;
+        }
+        
+        .mentor-title {
+            color: #4A90A4;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+        
+        .mentor-description {
+            color: #7F8C8D;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        
+        .mentor-stats {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            font-size: 0.85rem;
+            color: #7F8C8D;
+        }
+        
+        .mentor-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .mentor-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .resource-tabs {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .resource-tab {
+            padding: 0.75rem 1.5rem;
+            border: 2px solid #D5DBDB;
+            background: transparent;
+            border-radius: 25px;
+            color: #7F8C8D;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .resource-tab:hover,
+        .resource-tab.active {
+            border-color: #4A90A4;
+            color: #4A90A4;
+            background: rgba(74, 144, 164, 0.1);
+        }
+        
+        .resource-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .resource-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .resource-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+        }
+        
+        .resource-info {
+            flex: 1;
+        }
+        
+        .resource-info h4 {
+            font-size: 1.1rem;
+            color: #2C3E50;
+            margin-bottom: 0.5rem;
+        }
+        
+        .resource-info p {
+            color: #7F8C8D;
+            margin-bottom: 0.5rem;
+        }
+        
+        .phone-number,
+        .duration,
+        .read-time,
+        .test-info,
+        .music-info {
+            color: #4A90A4;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+        
+        .emergency-section {
+            background: linear-gradient(135deg, rgba(231, 76, 60, 0.1), rgba(192, 57, 43, 0.1));
+            border-radius: 16px;
+            padding: 3rem 2rem;
+            text-align: center;
+            border: 2px solid rgba(231, 76, 60, 0.2);
+        }
+        
+        .emergency-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #E74C3C;
+            margin-bottom: 1rem;
+        }
+        
+        .emergency-description {
+            font-size: 1.1rem;
+            color: #7F8C8D;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+        
+        .emergency-contacts {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-icon {
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+        
+        .contact-info {
+            flex: 1;
+            text-align: left;
+        }
+        
+        .contact-info h4 {
+            color: #2C3E50;
+            margin-bottom: 0.25rem;
+        }
+        
+        .contact-info p {
+            color: #4A90A4;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        .contact-info span {
+            color: #7F8C8D;
+            font-size: 0.9rem;
+        }
+        
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .tool-card {
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .tool-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .tool-card h3 {
+            font-size: 1.3rem;
+            color: #2C3E50;
+            margin-bottom: 1rem;
+        }
+        
+        .tool-card p {
+            color: #7F8C8D;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .tool-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+            font-size: 0.85rem;
+            color: #7F8C8D;
+        }
+        
+        .knowledge-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .knowledge-card {
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .knowledge-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .knowledge-card h3 {
+            font-size: 1.3rem;
+            color: #2C3E50;
+            margin-bottom: 1rem;
+        }
+        
+        .knowledge-card p {
+            color: #7F8C8D;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .knowledge-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+            font-size: 0.85rem;
+            color: #7F8C8D;
+        }
+        
+        .breathing-container {
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .breathing-circle {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #4A90A4, #E8A598);
+            margin: 2rem auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        
+        .breathing-instruction {
+            font-size: 1.5rem;
+            color: #2C3E50;
+            margin-bottom: 2rem;
+            font-weight: 600;
+        }
+        
+        .breathing-controls {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+        
+        .mindfulness-container {
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .mindfulness-instruction {
+            margin-bottom: 2rem;
+        }
+        
+        .mindfulness-instruction h4 {
+            color: #2C3E50;
+            margin-bottom: 1rem;
+        }
+        
+        .mindfulness-instruction p {
+            color: #7F8C8D;
+            line-height: 1.6;
+        }
+        
+        .mindfulness-timer {
+            margin-bottom: 2rem;
+        }
+        
+        .timer-display {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #4A90A4;
+            margin-bottom: 1rem;
+            font-family: monospace;
+        }
+        
+        .timer-controls {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+        
+        .emotion-journal {
+            padding: 1rem;
+        }
+        
+        .emotion-slider {
+            width: 100%;
+            margin: 1rem 0;
+        }
+        
+        .emotion-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: #7F8C8D;
+        }
+        
+        .emergency-chat {
+            padding: 1rem;
+        }
+        
+        .chat-header {
+            text-align: center;
+            padding: 1rem;
+            background: rgba(74, 144, 164, 0.1);
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+        
+        .chat-messages {
+            height: 300px;
+            overflow-y: auto;
+            padding: 1rem;
+            background: #F8F9FA;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+        
+        .message {
+            margin-bottom: 1rem;
+            padding: 0.75rem;
+            border-radius: 8px;
+        }
+        
+        .message.system {
+            background: rgba(74, 144, 164, 0.1);
+            color: #4A90A4;
+        }
+        
+        .message.counselor {
+            background: rgba(232, 165, 152, 0.1);
+            color: #E8A598;
+        }
+        
+        .chat-input {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .chat-input textarea {
+            flex: 1;
+            min-height: 60px;
+            resize: vertical;
+        }
+        
+        @media (max-width: 768px) {
+            .mentor-card {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .resource-tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .resource-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+            
+            .contact-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .emergency-contacts {
+                gap: 1rem;
+            }
+            
+            .breathing-controls,
+            .timer-controls {
+                flex-direction: column;
+            }
+            
+            .chat-input {
+                flex-direction: column;
+            }
+        }
+    </style>
+</body>
+</html>
